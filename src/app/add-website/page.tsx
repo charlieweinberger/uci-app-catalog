@@ -8,11 +8,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command"
-import { CalendarIcon, Check, ChevronsUpDown } from "lucide-react"
+import { CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
 import { Calendar } from "@/components/ui/calendar"
+
+import Combobox from "./combobox";
 
 export default function AddWebsite() {
   const router = useRouter()
@@ -26,8 +27,6 @@ export default function AddWebsite() {
   const [screenshot, setScreenshot] = useState<File | null>(null)
   const [isCreator, setIsCreator] = useState(false)
   const [canFollowUp, setCanFollowUp] = useState(false)
-
-  const allTags = ["official", "non-official", "course planning", "food"] // You might want to fetch this from an API or central state
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -89,42 +88,10 @@ export default function AddWebsite() {
             </PopoverContent>
           </Popover>
         </div>
-        {/* <div>
+        <div>
           <Label>Tags</Label>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline" className="w-full justify-between">
-                {selectedTags.length > 0 ? `${selectedTags.length} selected` : "Select tags"}
-                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-full p-0">
-              <Command>
-                <CommandInput />
-                <CommandList>
-                  <CommandEmpty>No tags found.</CommandEmpty>
-                  <CommandGroup>
-                    {allTags.map((tag) => (
-                      <CommandItem
-                        key={tag}
-                        onSelect={() => {
-                          setSelectedTags((prev) =>
-                            prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag],
-                          )
-                        }}
-                      >
-                        <Check
-                          className={cn("mr-2 h-4 w-4", selectedTags.includes(tag) ? "opacity-100" : "opacity-0")}
-                        />
-                        {tag}
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-        </div> */}
+          <Combobox options={["official", "non-official", "course-planning", "food"]} selectedOptions={selectedTags} setSelectedOptions={setSelectedTags} />
+        </div>
         <div>
           <Label htmlFor="screenshot">Screenshot</Label>
           <Input

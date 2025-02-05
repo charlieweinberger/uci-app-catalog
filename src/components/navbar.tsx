@@ -7,7 +7,7 @@ export function Navbar() {
     <nav className="border-b">
       <div className="flex h-16 items-center px-4">
         <div className="flex items-center space-x-4 mr-auto">
-          <Link href="/">
+          <Link href="/gallery">
             <Button variant="ghost" size="sm">
               <LayoutGrid className="h-5 w-5 mr-2" />
               Gallery
@@ -21,7 +21,11 @@ export function Navbar() {
           </Link>
         </div>
         <div className="flex-grow flex justify-center">
-          <h1 className="text-xl font-bold">UCI App Hub</h1>
+          <Link href="/">
+            <h1 className="text-xl font-bold">
+              UCI App Hub
+            </h1>
+          </Link>
         </div>
         <div className="flex items-center space-x-4 ml-auto">
           <Link href="/add-website">

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { GalleryItem } from "@/components/gallery-item"
-import { ItemModal } from "@/app/(pages)/gallery/item-modal"
+import { ItemModal } from "@/components/item-modal"
 import { websites, type Website } from "@/lib/mock-data"
 
 export default function SavedWebsites() {
