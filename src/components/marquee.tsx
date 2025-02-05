@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Marquee } from "@/components/ui/marquee";
+import { Marquee } from "@/components/ui/marquee"; // https://magicui.design/docs/components/marquee
 
 const websites = [
   {

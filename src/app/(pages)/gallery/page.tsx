@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { GalleryItem } from "@/app/gallery/item"
-import { ItemModal } from "@/app/gallery/item-modal"
+import { GalleryItem } from "@/components/gallery-item"
+import { ItemModal } from "@/app/(pages)/gallery/item-modal"
 import { websites, type Website } from "@/lib/mock-data"
 
 export default function WebsiteGallery() {
