@@ -10,7 +10,7 @@ interface ItemModalProps {
   onClose: () => void
 }
 
-export function ItemModal({ website, isOpen, onClose }: ItemModalProps) {
+export default function ItemModal({ website, isOpen, onClose }: ItemModalProps) {
   if (!website) return null
 
   return (
@@ -38,7 +38,7 @@ export function ItemModal({ website, isOpen, onClose }: ItemModalProps) {
           <p className="text-muted-foreground">{website.shortDescription}</p>
           <p>{website.longDescription}</p>
           <div className="flex justify-between text-sm text-muted-foreground">
-            <span>Author: {website.author}</span>
+            <span>Creator: {website.creator}</span>
             <span>Created: {website.createdDate}</span>
           </div>
           <a href={website.link} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">

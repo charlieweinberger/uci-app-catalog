@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { GalleryItem } from "@/components/gallery-item";
-import { ItemModal } from "@/components/item-modal";
+import Gallery from "@/components/gallery";
+import ItemModal from "@/components/item-modal";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -116,17 +116,7 @@ export default function WebsiteGallery() {
           Show Saved Only
         </Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-        {filteredWebsites.map((website) => (
-          <GalleryItem
-            key={website.id}
-            website={website}
-            onClick={() => setSelectedWebsite(website)}
-            onSave={() => toggleSaved(website.id)}
-            isSaved={savedWebsites.includes(website.id)}
-          />
-        ))}
-      </div>
+      <Gallery websiteList={filteredWebsites} setSelectedWebsite={setSelectedWebsite} toggleSaved={toggleSaved} savedWebsites={savedWebsites} />
       <ItemModal website={selectedWebsite} isOpen={!!selectedWebsite} onClose={() => setSelectedWebsite(null)} />
     </div>
   )

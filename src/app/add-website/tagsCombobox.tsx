@@ -3,7 +3,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Check, ChevronsUpDown } from "lucide-react";
 
-export default function Combobox({ options, selectedOptions, setSelectedOptions }: {
+export default function TagsCombobox({ options, selectedOptions, setSelectedOptions }: {
   options: string[],
   selectedOptions: string[],
   setSelectedOptions: (options: string[]) => void

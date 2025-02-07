@@ -13,7 +13,7 @@ interface GalleryItemProps {
   isSaved: boolean
 }
 
-export function GalleryItem({ website, onClick, onSave, isSaved }: GalleryItemProps) {
+export default function GalleryItem({ website, onClick, onSave, isSaved }: GalleryItemProps) {
   return (
     <div className="flex flex-col p-6 gap-4 cursor-pointer rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg" onClick={onClick}>
 

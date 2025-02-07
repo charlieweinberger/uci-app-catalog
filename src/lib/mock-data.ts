@@ -10,7 +10,7 @@ export interface Website {
   shortDescription: string
   link: string
   longDescription: string
-  author: string
+  creator: string
   createdDate: string
 }
 
@@ -24,7 +24,7 @@ export const websites: Website[] = [
     link: "https://university.edu",
     longDescription:
       "This is the official university website where students can access course information, register for classes, view grades, and access various student services.",
-    author: "University IT Department",
+    creator: "University IT Department",
     createdDate: "2020-01-01",
   },
   {
@@ -36,7 +36,7 @@ export const websites: Website[] = [
     link: "https://coursereviews.com",
     longDescription:
       "A platform created by students, for students. Here you can find honest reviews, ratings, and advice about courses from fellow students who have taken them.",
-    author: "Student Council",
+    creator: "Student Council",
     createdDate: "2021-03-15",
   },
   {
@@ -48,7 +48,7 @@ export const websites: Website[] = [
     link: "https://campusfood.com",
     longDescription:
       "Explore all the dining options available on campus, including menus, hours of operation, and student reviews. Find the perfect spot for your next meal!",
-    author: "Food Lovers Club",
+    creator: "Food Lovers Club",
     createdDate: "2022-09-01",
   },
   {
@@ -60,7 +60,7 @@ export const websites: Website[] = [
     link: "https://university.edu",
     longDescription:
       "This is the official university website where students can access course information, register for classes, view grades, and access various student services.",
-    author: "University IT Department",
+    creator: "University IT Department",
     createdDate: "2020-01-01",
   },
   {
@@ -72,7 +72,9 @@ export const websites: Website[] = [
     link: "https://coursereviews.com",
     longDescription:
       "A platform created by students, for students. Here you can find honest reviews, ratings, and advice about courses from fellow students who have taken them.",
-    author: "Student Council",
+    creator: "Student Council",
     createdDate: "2021-03-15",
   },
 ]
+
+export const tags: string[] = ["official", "non-official", "course-planning", "food"];

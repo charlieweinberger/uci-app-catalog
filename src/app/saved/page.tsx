@@ -1,53 +1,35 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { GalleryItem } from "@/components/gallery-item"
-import { ItemModal } from "@/components/item-modal"
-import { websites, type Website } from "@/lib/mock-data"
+import { useState } from "react";
+import Gallery from "@/components/gallery";
+import ItemModal from "@/components/item-modal";
+
+import { websites, type Website } from "@/lib/mock-data";
 
 export default function SavedWebsites() {
-  const [savedWebsites, setSavedWebsites] = useState<string[]>([])
-  const [selectedWebsite, setSelectedWebsite] = useState<Website | null>(null)
+  const [savedWebsites, setSavedWebsites] = useState<string[]>([]);
+  const [selectedWebsite, setSelectedWebsite] = useState<Website | null>(null);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("savedWebsites")
-    if (saved) {
-      setSavedWebsites(JSON.parse(saved))
-    }
-  }, [])
-
-  const savedWebsitesList = websites.filter((website) => savedWebsites.includes(website.id))
+  const savedWebsitesList = websites.filter((website) => savedWebsites.includes(website.id));
+  // const savedWebsitesList = websites;
 
   const toggleSaved = (websiteId: string) => {
     setSavedWebsites((prev) =>
       prev.includes(websiteId) ? prev.filter((id) => id !== websiteId) : [...prev, websiteId],
     )
-  }
+  };
 
-  useEffect(() => {
-    localStorage.setItem("savedWebsites", JSON.stringify(savedWebsites))
-  }, [savedWebsites])
+  // TODO: Update this w/ Supabase, as needed and depending on backend
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Saved Websites</h1>
+    <div className="p-8 flex flex-col gap-4">
+      <h1 className="text-3xl font-bold">Saved Websites</h1>
       {savedWebsitesList.length === 0 ? (
         <p>You haven&apos;t saved any websites yet.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {savedWebsitesList.map((website) => (
-            <GalleryItem
-              key={website.id}
-              website={website}
-              onClick={() => setSelectedWebsite(website)}
-              onSave={() => toggleSaved(website.id)}
-              isSaved={true}
-            />
-          ))}
-        </div>
+        <Gallery websiteList={savedWebsitesList} setSelectedWebsite={setSelectedWebsite} toggleSaved={toggleSaved} savedWebsites={savedWebsites} />
       )}
       <ItemModal website={selectedWebsite} isOpen={!!selectedWebsite} onClose={() => setSelectedWebsite(null)} />
     </div>
-  )
+  );
 }
-
