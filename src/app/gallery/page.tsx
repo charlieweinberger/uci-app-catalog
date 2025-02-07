@@ -1,31 +1,86 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { GalleryItem } from "@/components/gallery-item"
-import { ItemModal } from "@/components/item-modal"
-import { websites, type Website } from "@/lib/mock-data"
+import { useState } from "react";
+
+import { GalleryItem } from "@/components/gallery-item";
+import { ItemModal } from "@/components/item-modal";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
+
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
+import { ChevronDown } from 'lucide-react';
+
+import { websites, type Website } from "@/lib/mock-data";
+
+type Checked = DropdownMenuCheckboxItemProps["checked"];
+interface Tag {
+  name: string,
+  checked: Checked,
+  setChecked: (checked: Checked) => void
+}
+
+function TagDropdownMenu({ tags, updateSelectedTags }: {
+  tags: Tag[],
+  updateSelectedTags: (tag: string) => void
+}) {
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">
+          Tags
+          <ChevronDown />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        {tags.map((tag: Tag) => {
+          return (
+            <DropdownMenuCheckboxItem
+              key={tag.name}
+              checked={tag.checked}
+              onCheckedChange={(checked: boolean) => {
+                updateSelectedTags(tag.name);
+                tag.setChecked(checked);
+              }}
+            >
+              {tag.name}
+            </DropdownMenuCheckboxItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
 
 export default function WebsiteGallery() {
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedTags, setSelectedTags] = useState<string[]>([])
-  const [selectedWebsite, setSelectedWebsite] = useState<Website | null>(null)
-  const [savedWebsites, setSavedWebsites] = useState<string[]>([])
-  const [showSavedOnly, setShowSavedOnly] = useState(false)
 
-  const allTags = Array.from(new Set(websites.flatMap((website) => website.tags)))
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedWebsite, setSelectedWebsite] = useState<Website | null>(null);
+  const [savedWebsites, setSavedWebsites] = useState<string[]>([]);
+  const [showSavedOnly, setShowSavedOnly] = useState(false);
 
-  useEffect(() => {
-    const saved = localStorage.getItem("savedWebsites")
-    if (saved) {
-      setSavedWebsites(JSON.parse(saved))
-    }
-  }, [])
+  const allTagNames = Array.from(new Set(websites.flatMap((website) => website.tags)));
+  const [tagStates, setTagStates] = useState<Record<string, Checked>>({});
+  const tags: Tag[] = allTagNames.map((tagName) => ({
+    name: tagName,
+    checked: tagStates[tagName] || false,
+    setChecked: (checked: Checked) => setTagStates(prev => ({ ...prev, [tagName]: checked }))
+  }));
 
-  useEffect(() => {
-    localStorage.setItem("savedWebsites", JSON.stringify(savedWebsites))
-  }, [savedWebsites])
+  const updateSelectedTags = (tag: string) => {
+    setSelectedTags(
+      selectedTags.includes(tag)
+        ? selectedTags.filter((t) => t !== tag)
+        : [...selectedTags, tag]
+    );
+  };
 
   const filteredWebsites = websites.filter((website) => {
     const matchesSearch =
@@ -36,10 +91,6 @@ export default function WebsiteGallery() {
     return matchesSearch && matchesTags && matchesSaved
   })
 
-  const toggleTag = (tag: string) => {
-    setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]))
-  }
-
   const toggleSaved = (websiteId: string) => {
     setSavedWebsites((prev) =>
       prev.includes(websiteId) ? prev.filter((id) => id !== websiteId) : [...prev, websiteId],
@@ -47,36 +98,25 @@ export default function WebsiteGallery() {
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="p-8 flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Website Gallery</h1>
-      <div>
+      <div className="flex flex-row gap-4">
         <Input
           type="text"
           placeholder="Search websites..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="mb-4"
         />
-        <div className="flex flex-wrap gap-2 mb-4">
-          {allTags.map((tag) => (
-            <Button
-              key={tag}
-              variant={selectedTags.includes(tag) ? "default" : "outline"}
-              onClick={() => toggleTag(tag)}
-            >
-              {tag}
-            </Button>
-          ))}
-        </div>
+        <TagDropdownMenu tags={tags} updateSelectedTags={updateSelectedTags} />        
         <Button
           variant={showSavedOnly ? "default" : "outline"}
           onClick={() => setShowSavedOnly((prev) => !prev)}
           className="mb-4"
         >
-          {showSavedOnly ? "Show All" : "Show Saved Only"}
+          Show Saved Only
         </Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
         {filteredWebsites.map((website) => (
           <GalleryItem
             key={website.id}

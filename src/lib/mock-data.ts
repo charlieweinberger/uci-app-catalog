@@ -1,3 +1,7 @@
+import AntAlmanac from "./AntAlmanac.jpg";
+
+export { AntAlmanac };
+
 export interface Website {
   id: string
   name: string
@@ -13,7 +17,7 @@ export interface Website {
 export const websites: Website[] = [
   {
     id: "1",
-    name: "Official University Portal",
+    name: "Zot4Plan",
     screenshot: "/placeholder.svg?height=200&width=300",
     tags: ["official", "course planning"],
     shortDescription: "The main portal for university information and services.",
@@ -25,7 +29,7 @@ export const websites: Website[] = [
   },
   {
     id: "2",
-    name: "Student-Run Course Review Site",
+    name: "AntAlmanac",
     screenshot: "/placeholder.svg?height=200&width=300",
     tags: ["non-official", "course planning"],
     shortDescription: "Peer reviews and ratings for university courses.",
@@ -37,7 +41,7 @@ export const websites: Website[] = [
   },
   {
     id: "3",
-    name: "Campus Dining Guide",
+    name: "PeterPortal",
     screenshot: "/placeholder.svg?height=200&width=300",
     tags: ["non-official", "food"],
     shortDescription: "Comprehensive guide to on-campus dining options.",
@@ -49,7 +53,7 @@ export const websites: Website[] = [
   },
   {
     id: "4",
-    name: "Official University Portal",
+    name: "ZotSites",
     screenshot: "/placeholder.svg?height=200&width=300",
     tags: ["official", "course planning"],
     shortDescription: "The main portal for university information and services.",
@@ -61,7 +65,7 @@ export const websites: Website[] = [
   },
   {
     id: "5",
-    name: "Student-Run Course Review Site",
+    name: "CampusDish",
     screenshot: "/placeholder.svg?height=200&width=300",
     tags: ["non-official", "course planning"],
     shortDescription: "Peer reviews and ratings for university courses.",
@@ -70,17 +74,5 @@ export const websites: Website[] = [
       "A platform created by students, for students. Here you can find honest reviews, ratings, and advice about courses from fellow students who have taken them.",
     author: "Student Council",
     createdDate: "2021-03-15",
-  },
-  {
-    id: "6",
-    name: "Campus Dining Guide",
-    screenshot: "/placeholder.svg?height=200&width=300",
-    tags: ["non-official", "food"],
-    shortDescription: "Comprehensive guide to on-campus dining options.",
-    link: "https://campusfood.com",
-    longDescription:
-      "Explore all the dining options available on campus, including menus, hours of operation, and student reviews. Find the perfect spot for your next meal!",
-    author: "Food Lovers Club",
-    createdDate: "2022-09-01",
   },
 ]

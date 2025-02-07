@@ -1,7 +1,8 @@
+import Image from "next/image"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
-import type { Website } from "@/lib/mock-data"
+
+import { AntAlmanac, Website } from "@/lib/mock-data";
 
 interface ItemModalProps {
   website: Website | null
@@ -20,7 +21,8 @@ export function ItemModal({ website, isOpen, onClose }: ItemModalProps) {
         </DialogHeader>
         <div className="grid gap-4">
           <Image
-            src={website.screenshot || "/placeholder.svg"}
+            src={AntAlmanac}
+            // src={website.screenshot}
             alt={website.name}
             width={600}
             height={400}
