@@ -8,9 +8,9 @@ import { AntAlmanac, Website } from "@/lib/mock-data";
 
 interface GalleryItemProps {
   website: Website
-  onClick: () => void
-  onSave: () => void
-  isSaved: boolean
+  onClick?: () => void
+  onSave?: () => void
+  isSaved?: boolean
 }
 
 export default function GalleryItem({ website, onClick, onSave, isSaved }: GalleryItemProps) {
@@ -29,7 +29,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved }: Galle
             className="h-8 w-8"
             onClick={(e) => {
               e.stopPropagation()
-              onSave()
+              onSave?.()
             }}
           >
             <Bookmark className={isSaved ? "fill-current" : ""} />

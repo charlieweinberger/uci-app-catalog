@@ -1,6 +1,7 @@
-import Image from "next/image"
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
+import Image from "next/image";
+
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 
 import { AntAlmanac, Website } from "@/lib/mock-data";
 
@@ -8,14 +9,14 @@ interface ItemModalProps {
   website: Website | null
   isOpen: boolean
   onClose: () => void
-}
+};
 
 export default function ItemModal({ website, isOpen, onClose }: ItemModalProps) {
-  if (!website) return null
+  if (!website) return null;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="w-2/3 max-w-3xl">
         <DialogHeader>
           <DialogTitle>{website.name}</DialogTitle>
         </DialogHeader>
@@ -47,6 +48,5 @@ export default function ItemModal({ website, isOpen, onClose }: ItemModalProps) 
         </div>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
-
