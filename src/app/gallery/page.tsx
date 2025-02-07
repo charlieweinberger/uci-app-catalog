@@ -48,8 +48,8 @@ export default function WebsiteGallery() {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Website Gallery</h1>
-      <div className="mb-8">
+      <h1 className="text-3xl font-bold">Website Gallery</h1>
+      <div>
         <Input
           type="text"
           placeholder="Search websites..."
@@ -76,13 +76,13 @@ export default function WebsiteGallery() {
           {showSavedOnly ? "Show All" : "Show Saved Only"}
         </Button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredWebsites.map((website) => (
           <GalleryItem
             key={website.id}
             website={website}
             onClick={() => setSelectedWebsite(website)}
-            onBookmark={() => toggleSaved(website.id)}
+            onSave={() => toggleSaved(website.id)}
             isSaved={savedWebsites.includes(website.id)}
           />
         ))}

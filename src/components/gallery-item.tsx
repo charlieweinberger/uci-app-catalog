@@ -5,19 +5,23 @@ import Image from "next/image"
 import { Bookmark } from "lucide-react"
 import type { Website } from "@/lib/mock-data"
 
+import AntAlmanac from "../../public/AntAlmanac.jpg";
+
 interface GalleryItemProps {
   website: Website
   onClick: () => void
-  onBookmark: () => void
+  onSave: () => void
   isSaved: boolean
 }
 
-export function GalleryItem({ website, onClick, onBookmark, isSaved }: GalleryItemProps) {
+export function GalleryItem({ website, onClick, onSave, isSaved }: GalleryItemProps) {
   return (
-    <Card className="cursor-pointer hover:shadow-lg transition-shadow relative">
-      <CardContent className="p-4" onClick={onClick}>
+    <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={onClick}>
+      
+      <CardContent className="p-4">
         <Image
-          src={website.screenshot || "/placeholder.svg"}
+          src={AntAlmanac}
+          // src={website.screenshot}
           alt={website.name}
           width={300}
           height={200}
@@ -42,18 +46,19 @@ export function GalleryItem({ website, onClick, onBookmark, isSaved }: GalleryIt
           Visit Website
         </a>
       </CardContent>
+      
       <Button
         variant="ghost"
         size="icon"
-        className="absolute top-2 right-2"
+        className="absolute bottom-2 right-2"
         onClick={(e) => {
           e.stopPropagation()
-          onBookmark()
+          onSave()
         }}
       >
         <Bookmark className={isSaved ? "fill-current" : ""} />
       </Button>
+
     </Card>
   )
 }
-

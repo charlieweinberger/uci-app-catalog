@@ -1,33 +1,27 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
-import { Button } from "@/components/ui/button";
 import { SendHorizontal } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function SearchBar() {
   const router = useRouter();
+
   const handleSubmit = (event: React.FormEvent) => {
     // add search functionality here
     event.preventDefault();
-    console.log("before gallery")
-    console.log(event);
     router.push("/gallery");
-    console.log("now in gallery")
-    console.log(event);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative mb-12 w-full max-w-2xl">
+    <form onSubmit={handleSubmit} className="w-3/4 min-w-80 max-w-[640px] relative">
       <input
         type="text"
-        placeholder="Search for UCI apps and websites..."
-        className="w-full rounded-full border border-gray-300 py-3 pl-6 pr-12 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+        className={cn("flex h-10 w-full rounded-md border border-input bg-background py-2 px-4 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 pr-8")}
       />
-      <Button variant="ghost">
-        <SendHorizontal className="h-6 w-6 text-blue-500" />
-      </Button>
+      <button className="absolute right-3 top-1/2 transform -translate-y-1/2">
+        <SendHorizontal className="text-muted-foreground hover:text-blue-500" size={18} />
+      </button>
     </form>
   );
 }
-

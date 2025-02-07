@@ -40,7 +40,7 @@ export default function SavedWebsites() {
               key={website.id}
               website={website}
               onClick={() => setSelectedWebsite(website)}
-              onBookmark={() => toggleSaved(website.id)}
+              onSave={() => toggleSaved(website.id)}
               isSaved={true}
             />
           ))}
