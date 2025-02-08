@@ -32,7 +32,7 @@ export const websites: Website[] = [
     name: "AntAlmanac",
     screenshot: "/placeholder.svg?height=200&width=300",
     tags: ["non-official", "course planning"],
-    shortDescription: "Peer reviews and ratings for university courses.",
+    shortDescription: "A schedule planning and course exploration tool for UCI students.",
     link: "https://coursereviews.com",
     longDescription:
       "A platform created by students, for students. Here you can find honest reviews, ratings, and advice about courses from fellow students who have taken them.",

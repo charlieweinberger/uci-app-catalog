@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription
+} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 
 import { AntAlmanac, Website } from "@/lib/mock-data";
@@ -14,11 +20,14 @@ interface ItemModalProps {
 export default function ItemModal({ website, isOpen, onClose }: ItemModalProps) {
   if (!website) return null;
 
+  // TODO: get rid of Dialog (other than when necessary), make similar to gallery-item.tsx
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-2/3 max-w-3xl">
         <DialogHeader>
           <DialogTitle>{website.name}</DialogTitle>
+          <DialogDescription>{website.shortDescription}</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4">
           <Image
@@ -36,7 +45,6 @@ export default function ItemModal({ website, isOpen, onClose }: ItemModalProps) 
               </Badge>
             ))}
           </div>
-          <p className="text-muted-foreground">{website.shortDescription}</p>
           <p>{website.longDescription}</p>
           <div className="flex justify-between text-sm text-muted-foreground">
             <span>Creator: {website.creator}</span>

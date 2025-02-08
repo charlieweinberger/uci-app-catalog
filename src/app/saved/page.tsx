@@ -20,6 +20,7 @@ export default function SavedWebsites() {
   };
 
   // TODO: Update this w/ Supabase, as needed and depending on backend
+  // TODO: add separate tabs for saved websites vs. websites that the user manually added
 
   return (
     <div className="p-8 flex flex-col gap-4">

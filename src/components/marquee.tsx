@@ -7,7 +7,7 @@ import { websites } from "@/lib/mock-data";
 export default function WebsiteMarquee() {
   return (
     <div>
-      <Marquee pauseOnHover>
+      <Marquee className="max-w-[1536px]" pauseOnHover>
         {websites.map((website) => (
           <GalleryItem
             key={website.id}

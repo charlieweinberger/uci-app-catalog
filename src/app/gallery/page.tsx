@@ -100,7 +100,7 @@ export default function WebsiteGallery() {
   return (
     <div className="p-8 flex flex-col gap-4">
       <h1 className="text-3xl font-bold">Website Gallery</h1>
-      <div className="flex flex-row gap-4">
+      <div className="flex flex-row gap-4 flex-wrap sm:flex-nowrap">
         <Input
           type="text"
           placeholder="Search websites..."

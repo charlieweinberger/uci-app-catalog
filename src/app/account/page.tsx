@@ -20,7 +20,7 @@ export default function Account() {
   return (
     <div className="p-8 flex flex-col items-center gap-4">
       <h1 className="text-3xl font-bold">Account</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-1/2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>
           <Label htmlFor="email">Email</Label>
           <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />

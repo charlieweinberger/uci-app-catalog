@@ -52,22 +52,22 @@ function NavbarButton({ destination, variant, icon: Icon, text }: NavbarButtonPr
 
 export default function Navbar() {
   return (
-    <nav className="border-b p-4 flex items-center">
-      <div className="flex-1 flex gap-2">
-        <NavbarButton destination="/gallery" variant="ghost" icon={LayoutGrid} text="Gallery" />
-        <NavbarButton destination="/saved" variant="ghost" icon={Bookmark} text="Saved" />
-      </div>
-      <div className="flex-1">
-        <Link href="/">
-          <h1 className="text-center text-xl font-bold">
-            UCI App Hub
-          </h1>
-        </Link>
-      </div>
-      <div className="flex-1 flex gap-2 justify-end">
-        <NavbarButton destination="/add-website" variant="default" icon={Plus} text="Add Website" />
-        <NavbarButton destination="/account" variant="ghost" icon={UserCircle2} text="Account" />
-      </div>
-    </nav>
+    <div className="w-full border-b p-4 flex justify-center">
+      <nav className="w-full max-w-[1536px] flex items-center justify-between">
+        <div>
+          <Link href="/">
+            <h1 className="text-center text-xl font-bold">
+              UCI App Hub
+            </h1>
+          </Link>
+        </div>
+        <div className="flex gap-1">
+          <NavbarButton destination="/gallery" variant="ghost" icon={LayoutGrid} text="Gallery" />
+          <NavbarButton destination="/saved" variant="ghost" icon={Bookmark} text="Saved" />
+          <NavbarButton destination="/add-website" variant="ghost" icon={Plus} text="Add Website" />
+          <NavbarButton destination="/account" variant="ghost" icon={UserCircle2} text="Account" />
+        </div>
+      </nav>
+    </div>
   );
 }
