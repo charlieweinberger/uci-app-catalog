@@ -11,11 +11,13 @@ interface GalleryItemProps {
   onClick?: () => void
   onSave?: () => void
   isSaved?: boolean
+  showSaveButton?: boolean
+  width?: string
 }
 
-export default function GalleryItem({ website, onClick, onSave, isSaved }: GalleryItemProps) {
+export default function GalleryItem({ website, onClick, onSave, isSaved, showSaveButton=true, width="w-auto" }: GalleryItemProps) {
   return (
-    <div className="flex flex-col p-6 gap-4 cursor-pointer rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg" onClick={onClick}>
+    <div className={`${width} flex flex-col p-6 gap-4 cursor-pointer rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg`} onClick={onClick}>
 
       {/* Title + Links */}
       <div className="flex justify-between">
@@ -23,7 +25,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved }: Galle
           {website.name}
         </h2>
         <div className="flex gap-2">
-          <Button
+          {showSaveButton && <Button
             variant="outline"
             size="icon"
             className="h-8 w-8"
@@ -33,7 +35,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved }: Galle
             }}
           >
             <Bookmark className={isSaved ? "fill-current" : ""} />
-          </Button>
+          </Button>}
           <Button size="icon" className="h-8 w-8" asChild>
             <Link
               href={website.link}
