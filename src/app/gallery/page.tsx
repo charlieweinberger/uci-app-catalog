@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Gallery from "@/components/gallery";
 import ItemModal from "@/components/item-modal";
+import AddWebsiteModal from "@/components/add-website-modal";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -65,6 +66,7 @@ export default function WebsiteGallery() {
   const [selectedWebsite, setSelectedWebsite] = useState<Website | null>(null);
   const [savedWebsites, setSavedWebsites] = useState<string[]>([]);
   const [showSavedOnly, setShowSavedOnly] = useState(false);
+  const [addWebsiteModal, setAddWebsiteModal] = useState<boolean>(false);
 
   const allTagNames = Array.from(new Set(websites.flatMap((website) => website.tags)));
   const [tagStates, setTagStates] = useState<Record<string, Checked>>({});
@@ -99,7 +101,14 @@ export default function WebsiteGallery() {
 
   return (
     <div className="p-8 flex flex-col gap-4">
-      <h1 className="text-3xl font-bold">Website Gallery</h1>
+      <div className="flex justify-between">
+        <h1 className="text-3xl font-bold">Website Gallery</h1>
+        <Button
+          onClick={() => setAddWebsiteModal(!addWebsiteModal)}
+        >
+          Add Website
+        </Button>
+      </div>
       <div className="flex flex-row gap-4 flex-wrap sm:flex-nowrap">
         <Input
           type="text"
@@ -118,6 +127,7 @@ export default function WebsiteGallery() {
       </div>
       <Gallery websiteList={filteredWebsites} setSelectedWebsite={setSelectedWebsite} toggleSaved={toggleSaved} savedWebsites={savedWebsites} />
       <ItemModal website={selectedWebsite} isOpen={!!selectedWebsite} onClose={() => setSelectedWebsite(null)} />
+      <AddWebsiteModal isOpen={addWebsiteModal} onClose={() => setAddWebsiteModal(!addWebsiteModal)} />
     </div>
   )
 }

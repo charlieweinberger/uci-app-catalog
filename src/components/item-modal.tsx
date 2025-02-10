@@ -11,13 +11,11 @@ import { Badge } from "@/components/ui/badge";
 
 import { AntAlmanac, Website } from "@/lib/mock-data";
 
-interface ItemModalProps {
+export default function ItemModal({ website, isOpen, onClose }: {
   website: Website | null
   isOpen: boolean
   onClose: () => void
-};
-
-export default function ItemModal({ website, isOpen, onClose }: ItemModalProps) {
+}) {
   if (!website) return null;
 
   // TODO: get rid of Dialog (other than when necessary), make similar to gallery-item.tsx
