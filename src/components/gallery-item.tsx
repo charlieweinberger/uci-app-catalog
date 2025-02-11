@@ -1,45 +1,22 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Bookmark, ExternalLink } from "lucide-react";
+import ItemButtons from "@/components/item-buttons";
 
-export default function GalleryItem({ website, onClick, onSave, isSaved }: {
+export default function GalleryItem({ website, onClick, onSave, isSaved, onReport }: {
   website: Website
   onClick: () => void
   onSave: () => void
   isSaved: boolean
+  onReport: () => void
 }) {
+
   return (
     <div className="w-auto flex flex-col p-6 gap-4 cursor-pointer rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg" onClick={onClick}>
 
       {/* Title + Links */}
       <div className="flex justify-between">
-        <h2 className="text-2xl font-semibold">
-          {website.name}
-        </h2>
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            className="h-8 w-8"
-            onClick={(e) => {
-              e.stopPropagation()
-              onSave?.()
-            }}
-          >
-            <Bookmark className={isSaved ? "fill-current" : ""} />
-          </Button>
-          <Button size="icon" className="h-8 w-8" asChild>
-            <Link
-              href={website.link}
-              onClick={(e) => e.stopPropagation()}
-              target="_blank"
-            >
-              <ExternalLink />
-            </Link>
-          </Button>
-        </div>
+        <h2 className="text-2xl font-semibold">{website.name}</h2>
+        <ItemButtons onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
       </div>
 
       {/* Short Description*/}

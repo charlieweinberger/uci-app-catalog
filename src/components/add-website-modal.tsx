@@ -18,16 +18,16 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 import TagsCombobox from "@/components/tags-combobox";
 
-export default function AddWebsiteModal({ isOpen, onClose }: {
+export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
   isOpen: boolean
-  onClose: () => void
+  resetAddWebsiteModal: () => void
 }) {
   const [websiteName, setWebsiteName] = useState("");
   const [link, setLink] = useState("");
   const [shortDescription, setShortDescription] = useState("");
   const [creator, setCreator] = useState("");
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-  const [screenshot, setScreenshot] = useState<File | null>(null);
+  const [screenshot, setScreenshot] = useState<File | string | null>(null);
   const [fullDescription, setFullDescription] = useState("");
   const [canFollowUp, setCanFollowUp] = useState(false);
   const [userName, setUserName] = useState("");
@@ -35,11 +35,57 @@ export default function AddWebsiteModal({ isOpen, onClose }: {
 
   if (!isOpen) return null;
 
+  const onClose = () => {
+    resetAddWebsiteModal();
+    setWebsiteName("");
+    setLink("");
+    setShortDescription("");
+    setCreator("");
+    setSelectedTags([]);
+    setScreenshot(null);
+    setFullDescription("");
+    setCanFollowUp(false);
+    setUserName("");
+    setUserEmail("");
+  }
+
+  // TODO add website to user's localStorage
+  const addWebsiteToLocalStorage = (website: Website) => {
+    console.log("Adding website to localStorage: ", website);
+    return;
+  };
+
+  // TODO send website to me
+  const sendWebsiteToMe = (website: Website, user: User | null) => {
+    // TODO add activelyMaintained and dateAdded
+    console.log("Sending website by user to me: ", website, user);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
+    
     e.preventDefault();
     onClose();
-    // TODO send this data to your backend
-    console.log(screenshot); // this line is just to get rid of the error that arises from not using screenshot anywhere else
+
+    const website: Website = {
+      name: websiteName,
+      link: link,
+      shortDescription: shortDescription,
+      creator: creator,
+      tags: selectedTags,
+      screenshot: screenshot,
+      fullDescription: fullDescription,
+      activelyMaintained: "Unknown"
+    };
+
+    const user: User = {
+      exists: canFollowUp,
+      userName: userName,
+      userEmail: userEmail
+    };
+
+    addWebsiteToLocalStorage(website);
+    sendWebsiteToMe(website, user);
+
   };
 
   return (
@@ -98,7 +144,7 @@ export default function AddWebsiteModal({ isOpen, onClose }: {
               value={fullDescription}
               onChange={(e) => setFullDescription(e.target.value)}
             />
-          </div>      
+          </div>
           <div className="flex items-center gap-2">
             <Checkbox
               id="canFollowUp"
