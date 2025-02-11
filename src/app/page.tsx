@@ -47,7 +47,7 @@ export default function WebsiteGallery() {
     <div className="p-8 flex flex-col gap-4">
       
       <div className="flex justify-between">
-        <h1 className="text-3xl font-bold">UCI App Hub</h1>
+        <h1 className="text-3xl font-bold">UCI App Catalog</h1>
         <Button
           onClick={() => setAddWebsiteModal(!addWebsiteModal)}
         >

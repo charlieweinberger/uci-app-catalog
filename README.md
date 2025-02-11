@@ -1,1 +1,1 @@
-# UCI App Hub
+# UCI App Catalog

@@ -6,8 +6,8 @@ import "@/app/globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "UCI App Hub",
-  description: "A hub for all UCI apps and websites",
+  title: "UCI App Catalog",
+  description: "A catalog for all UCI apps and websites",
 }
 
 export default function RootLayout({
