@@ -24,7 +24,7 @@ export default function ItemModal({ website, isOpen, onClose, onSave, isSaved }:
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-2/3 max-w-3xl">
+      <DialogContent className="w-3/4 max-w-3xl max-h-[calc(100vh-192px)] overflow-auto">
         
         <DialogHeader>
           <div className="flex flex-row justify-between">
