@@ -26,7 +26,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved, onRepor
 
       {/* Image */}
       <Image
-        src={website.screenshot}
+        src={website.screenshot as string}
         alt={website.name}
         width={300}
         height={200}
