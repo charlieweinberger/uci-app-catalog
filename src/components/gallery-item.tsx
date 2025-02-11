@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Bookmark, ExternalLink } from "lucide-react";
 
-import { AntAlmanac, Website } from "@/lib/mock-data";
+import { AntAlmanac } from "@/lib/mock-data";
 
 interface GalleryItemProps {
   website: Website

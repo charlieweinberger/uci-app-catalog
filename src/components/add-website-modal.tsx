@@ -18,7 +18,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 import TagsCombobox from "./tagsCombobox";
 
-import { Tag, tags } from "@/lib/mock-data";
+import { tags } from "@/lib/mock-data";
 
 export default function AddWebsiteModal({ isOpen, onClose }: {
   isOpen: boolean

@@ -1,7 +1,5 @@
 import GalleryItem from "@/components/gallery-item";
 
-import { type Website } from "@/lib/mock-data";
-
 export default function Gallery({ websiteList, setSelectedWebsite, toggleSaved, savedWebsites } : {
   websiteList: Website[],
   setSelectedWebsite: (website: Website) => void,

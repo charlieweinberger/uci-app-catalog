@@ -14,21 +14,14 @@ import { DropdownMenu,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { ChevronDown } from 'lucide-react';
 
-import { websites, type Website } from "@/lib/mock-data";
+import { websites } from "@/lib/mock-data";
 
-type Checked = DropdownMenuCheckboxItemProps["checked"];
-interface Tag {
-  name: string,
-  checked: Checked,
-  setChecked: (checked: Checked) => void
-}
-
+// TODO how is this different from tagsCombobox.tsx?
 function TagDropdownMenu({ tags, updateSelectedTags }: {
-  tags: Tag[],
-  updateSelectedTags: (tag: string) => void
+  tags: TagDropdown[],
+  updateSelectedTags: (tag: Tag) => void
 }) {
 
   return (
@@ -40,7 +33,7 @@ function TagDropdownMenu({ tags, updateSelectedTags }: {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        {tags.map((tag: Tag) => {
+        {tags.map((tag: TagDropdown) => {
           return (
             <DropdownMenuCheckboxItem
               key={tag.name}
@@ -62,21 +55,22 @@ function TagDropdownMenu({ tags, updateSelectedTags }: {
 export default function WebsiteGallery() {
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [selectedWebsite, setSelectedWebsite] = useState<Website | null>(null);
   const [savedWebsites, setSavedWebsites] = useState<string[]>([]);
   const [showSavedOnly, setShowSavedOnly] = useState(false);
   const [addWebsiteModal, setAddWebsiteModal] = useState<boolean>(false);
 
-  const allTagNames = Array.from(new Set(websites.flatMap((website) => website.tags)));
   const [tagStates, setTagStates] = useState<Record<string, Checked>>({});
-  const tags: Tag[] = allTagNames.map((tagName) => ({
-    name: tagName,
+  
+  const allTagNames = Array.from(new Set(websites.flatMap((website) => website.tags)));
+  const tags: TagDropdown[] = allTagNames.map((tagName: Tag) => ({
+    name: tagName, 
     checked: tagStates[tagName] || false,
     setChecked: (checked: Checked) => setTagStates(prev => ({ ...prev, [tagName]: checked }))
   }));
 
-  const updateSelectedTags = (tag: string) => {
+  const updateSelectedTags = (tag: Tag) => {
     setSelectedTags(
       selectedTags.includes(tag)
         ? selectedTags.filter((t) => t !== tag)
@@ -87,17 +81,18 @@ export default function WebsiteGallery() {
   const filteredWebsites = websites.filter((website) => {
     const matchesSearch =
       website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      website.shortDescription.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) => website.tags.includes(tag))
-    const matchesSaved = !showSavedOnly || savedWebsites.includes(website.id)
-    return matchesSearch && matchesTags && matchesSaved
-  })
+      website.shortDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      website.fullDescription.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesTags = selectedTags.length === 0 || selectedTags.every((tag: Tag) => website.tags.includes(tag));
+    const matchesSaved = !showSavedOnly || savedWebsites.includes(website.id);
+    return matchesSearch && matchesTags && matchesSaved;
+  });
 
   const toggleSaved = (websiteId: string) => {
     setSavedWebsites((prev) =>
       prev.includes(websiteId) ? prev.filter((id) => id !== websiteId) : [...prev, websiteId],
-    )
-  }
+    );
+  };
 
   return (
     <div className="p-8 flex flex-col gap-4">
@@ -129,5 +124,5 @@ export default function WebsiteGallery() {
       <ItemModal website={selectedWebsite} isOpen={!!selectedWebsite} onClose={() => setSelectedWebsite(null)} />
       <AddWebsiteModal isOpen={addWebsiteModal} onClose={() => setAddWebsiteModal(!addWebsiteModal)} />
     </div>
-  )
+  );
 }

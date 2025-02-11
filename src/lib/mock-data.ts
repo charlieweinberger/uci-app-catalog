@@ -2,23 +2,12 @@ import AntAlmanac from "./AntAlmanac.jpg";
 
 export { AntAlmanac };
 
-export interface Website {
-  id: string
-  name: string
-  screenshot: string
-  tags: string[]
-  shortDescription: string
-  link: string
-  fullDescription: string
-  creator: string
-}
-
 export const websites: Website[] = [
   {
     id: "1",
     name: "Zot4Plan",
     screenshot: "/placeholder.svg?height=200&width=300",
-    tags: ["official", "course planning"],
+    tags: ["official", "course-planning"],
     shortDescription: "The main portal for university information and services.",
     link: "https://university.edu",
     fullDescription:
@@ -29,7 +18,7 @@ export const websites: Website[] = [
     id: "2",
     name: "AntAlmanac",
     screenshot: "/placeholder.svg?height=200&width=300",
-    tags: ["non-official", "course planning"],
+    tags: ["non-official", "course-planning"],
     shortDescription: "A schedule planning and course exploration tool for UCI students.",
     link: "https://coursereviews.com",
     fullDescription:
@@ -51,7 +40,7 @@ export const websites: Website[] = [
     id: "4",
     name: "ZotSites",
     screenshot: "/placeholder.svg?height=200&width=300",
-    tags: ["official", "course planning"],
+    tags: ["official", "course-planning"],
     shortDescription: "The main portal for university information and services.",
     link: "https://university.edu",
     fullDescription:
@@ -62,15 +51,13 @@ export const websites: Website[] = [
     id: "5",
     name: "CampusDish",
     screenshot: "/placeholder.svg?height=200&width=300",
-    tags: ["non-official", "course planning"],
+    tags: ["non-official", "course-planning"],
     shortDescription: "Peer reviews and ratings for university courses.",
     link: "https://coursereviews.com",
     fullDescription:
       "A platform created by students, for students. Here you can find honest reviews, ratings, and advice about courses from fellow students who have taken them.",
     creator: "Student Council",
   },
-]
-
-export type Tag = "official" | "non-official" | "course-planning" | "food";
+];
 
 export const tags: Tag[] = ["official", "non-official", "course-planning", "food"];
