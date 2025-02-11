@@ -16,9 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-import TagsCombobox from "./tagsCombobox";
-
-import { tags } from "@/lib/mock-data";
+import TagsCombobox from "@/components/tags-combobox";
 
 export default function AddWebsiteModal({ isOpen, onClose }: {
   isOpen: boolean
@@ -80,7 +78,7 @@ export default function AddWebsiteModal({ isOpen, onClose }: {
             </div>
             <div>
               <Label>Tags</Label>
-              <TagsCombobox options={tags} selectedOptions={selectedTags} setSelectedOptions={setSelectedTags} />
+              <TagsCombobox selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
             </div>
             <div>
               <Label htmlFor="screenshot">Screenshot</Label>

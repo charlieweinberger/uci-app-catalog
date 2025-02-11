@@ -3,17 +3,18 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Check, ChevronsUpDown } from "lucide-react";
 
-export default function TagsCombobox({ options, selectedOptions, setSelectedOptions }: {
-  options: Tag[],
-  selectedOptions: Tag[],
-  setSelectedOptions: (options: Tag[]) => void
+import { tags } from "@/lib/mock-data";
+
+export default function TagsCombobox({ selectedTags, setSelectedTags }: {
+  selectedTags: Tag[],
+  setSelectedTags: (tags: Tag[]) => void
 }) {
 
-  const updateSelectedOptions = (option: Tag) => {
-    if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter((t: Tag) => t !== option));
+  const updateSelectedTags = (tag: Tag) => {
+    if (selectedTags.includes(tag)) {
+      setSelectedTags(selectedTags.filter((t: Tag) => t !== tag));
     } else {
-      setSelectedOptions([...selectedOptions, option]);
+      setSelectedTags([...selectedTags, tag]);
     }
   };
 
@@ -21,25 +22,25 @@ export default function TagsCombobox({ options, selectedOptions, setSelectedOpti
     <Popover>
       <PopoverTrigger asChild>
         <Button variant="outline" className="w-full justify-between">
-          {selectedOptions.length > 0 ? `${selectedOptions.length} selected` : "Select options"}
+          {selectedTags.length > 0 ? `${selectedTags.length} selected` : "Select Tags"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-full p-0">
         <Command>
-          <CommandInput placeholder="Search options..." />
+          <CommandInput placeholder="Search tags..." />
           <CommandList>
-            <CommandEmpty>No options found.</CommandEmpty>
+            <CommandEmpty>No tags found.</CommandEmpty>
             <CommandGroup>
-              {options.map((option) => (
+              {tags.map((tag) => (
                 <CommandItem
-                  key={option}
-                  onSelect={() => updateSelectedOptions(option)}
+                  key={tag}
+                  onSelect={() => updateSelectedTags(tag)}
                 >
                   <Check
-                    className={`mr-2 h-4 w-4 ${selectedOptions.includes(option) ? "opacity-100" : "opacity-0"}`}
+                    className={`mr-2 h-4 w-4 ${selectedTags.includes(tag) ? "opacity-100" : "opacity-0"}`}
                   />
-                  {option}
+                  {tag}
                 </CommandItem>
               ))}
             </CommandGroup>
