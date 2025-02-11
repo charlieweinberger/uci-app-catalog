@@ -1,12 +1,25 @@
-type Tag = "official" | "non-official" | "course-planning" | "food";
+type Tag = "Official" | "Non-Official" | "Course Planning" | "Food";
+type ActivelyMaintained = "Yes" | "No" | "Unknown";
 
 interface Website {
-  id: string
   name: string
-  screenshot: string
-  tags: Tag[]
-  shortDescription: string
   link: string
-  fullDescription: string
+  shortDescription: string
   creator: string
+  tags: Tag[]
+  screenshot: File | string | null
+  fullDescription: string
+  activelyMaintained: ActivelyMaintained
 };
+
+interface User {
+  exists: boolean
+  userName: string
+  userEmail: string
+}
+
+interface WebsiteReport {
+  website: Website
+  user: User
+  reason: string
+}

@@ -1,8 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -11,53 +9,32 @@ import {
   DialogDescription
 } from "@/components/ui/dialog";
 
-import { Bookmark, ExternalLink } from "lucide-react";
+import ItemButtons from "@/components/item-buttons";
 
-export default function ItemModal({ website, isOpen, onClose, onSave, isSaved }: {
+export default function ItemModal({ website, resetSelectedWebsite, onSave, isSaved, onReport }: {
   website: Website | null
-  isOpen: boolean
-  onClose: () => void
+  resetSelectedWebsite: () => void
   onSave: () => void
   isSaved: boolean
+  onReport: () => void
 }) {
   if (!website) return null;
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={!!website} onOpenChange={resetSelectedWebsite}>
       <DialogContent className="w-3/4 max-w-3xl max-h-[calc(100vh-192px)] overflow-auto">
         
         <DialogHeader>
           <div className="flex flex-row justify-between">
             <DialogTitle>{website.name}</DialogTitle>
-            <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="icon"
-                className="w-8 h-8"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  onSave?.()
-                }}
-              >
-                <Bookmark className={isSaved ? "fill-current" : ""} />
-              </Button>
-              <Button size="icon" className="w-8 h-8" asChild>
-                <Link
-                  href={website.link}
-                  onClick={(e) => e.stopPropagation()}
-                  target="_blank"
-                >
-                  <ExternalLink />
-                </Link>
-              </Button>
-            </div>
+            <ItemButtons onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
           </div>
           <DialogDescription>{website.shortDescription}</DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col gap-4">
           <Image
-            src={website.screenshot}
+            src={website.screenshot as string}
             alt={website.name}
             width={600}
             height={400}
@@ -71,7 +48,10 @@ export default function ItemModal({ website, isOpen, onClose, onSave, isSaved }:
             ))}
           </div>
           <p>{website.fullDescription}</p>
-          <p className="text-sm text-muted-foreground">Creator: {website.creator}</p>
+          <div className="flex flex-row justify-between text-sm text-muted-foreground">
+            <p>Creator: {website.creator}</p>
+            <p>Actively Maintained? {website.activelyMaintained}</p>
+          </div>
         </div>
       </DialogContent>
     </Dialog>

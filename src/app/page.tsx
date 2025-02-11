@@ -5,21 +5,23 @@ import { useState } from "react";
 import GalleryItem from "@/components/gallery-item";
 import ItemModal from "@/components/item-modal";
 import AddWebsiteModal from "@/components/add-website-modal";
+import ReportModal from "@/components/report-website-modal";
 import TagsCombobox from "@/components/tags-combobox";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { websites } from "@/lib/mock-data";
+import { websites } from "@/lib/data";
 
 export default function WebsiteGallery() {
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
-  const [selectedWebsite, setSelectedWebsite] = useState<Website | null>(null);
-  const [savedWebsites, setSavedWebsites] = useState<string[]>([]);
-  const [showSavedOnly, setShowSavedOnly] = useState(false);
-  const [addWebsiteModal, setAddWebsiteModal] = useState<boolean>(false);
+  const [ searchTerm, setSearchTerm ] = useState("");
+  const [ selectedTags, setSelectedTags ] = useState<Tag[]>([]);
+  const [ selectedWebsite, setSelectedWebsite ] = useState<Website | null>(null);
+  const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
+  const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
+  const [ addWebsiteModal, setAddWebsiteModal ] = useState<boolean>(false);
+  const [ websiteToReport, setWebsiteToReport ] = useState<Website | null>(null);
 
   const filteredWebsites = websites.filter((website) => {
     const matchesSearch =
@@ -27,20 +29,22 @@ export default function WebsiteGallery() {
       website.shortDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
       website.fullDescription.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTags = selectedTags.length === 0 || selectedTags.every((tag: Tag) => website.tags.includes(tag));
-    const matchesSaved = !showSavedOnly || savedWebsites.includes(website.id);
+    const matchesSaved = !showSavedWebsitesOnly || savedWebsites.includes(website);
     return matchesSearch && matchesTags && matchesSaved;
   });
 
-  const toggleSaved = (websiteId: string | undefined) => {
-    if (!websiteId) return;
-    setSavedWebsites((prev) =>
-      prev.includes(websiteId) ? prev.filter((id) => id !== websiteId) : [...prev, websiteId],
+  const updateSavedWebsites = (website: Website | null) => {
+    if (!website) return;
+    setSavedWebsites(
+      savedWebsites.includes(website)
+        ? savedWebsites.filter((savedWebsite) => savedWebsite !== website)
+        : [...savedWebsites, website]
     );
   };
 
   const checkIfSaved = (website: Website | null) => {
     if (!website) return false;
-    return savedWebsites.includes(website.id);
+    return savedWebsites.includes(website);
   }
 
   return (
@@ -68,8 +72,8 @@ export default function WebsiteGallery() {
             setSelectedTags={setSelectedTags}
           />
           <Button
-            variant={showSavedOnly ? "default" : "outline"}
-            onClick={() => setShowSavedOnly((prev) => !prev)}
+            variant={showSavedWebsitesOnly ? "default" : "outline"}
+            onClick={() => setShowSavedWebsitesOnly(!showSavedWebsitesOnly)}
             className="mb-4"
           >
             Show Saved Only
@@ -80,26 +84,35 @@ export default function WebsiteGallery() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredWebsites.map((website: Website) => (
           <GalleryItem
-            key={website.id}
+            key={website.name}
             website={website}
             onClick={() => setSelectedWebsite(website)}
-            onSave={() => toggleSaved(website.id)}
-            isSaved={savedWebsites.includes(website.id)}
+            onSave={() => updateSavedWebsites(website)}
+            isSaved={savedWebsites.includes(website)}
+            onReport={() => setWebsiteToReport(website)}
           />
         ))}
       </div>
 
       <ItemModal
-        key={selectedWebsite?.id}
         website={selectedWebsite}
-        isOpen={!!selectedWebsite}
-        onClose={() => setSelectedWebsite(null)}
-        onSave={() => toggleSaved(selectedWebsite?.id)}
+        resetSelectedWebsite={() => setSelectedWebsite(null)}
+        onSave={() => updateSavedWebsites(selectedWebsite)}
         isSaved={checkIfSaved(selectedWebsite)}
+        onReport={() => {
+          setSelectedWebsite(null);
+          setWebsiteToReport(selectedWebsite);
+        }}
       />
-            
-      <AddWebsiteModal isOpen={addWebsiteModal} onClose={() => setAddWebsiteModal(!addWebsiteModal)} />
-    
+      <AddWebsiteModal
+        isOpen={addWebsiteModal}
+        resetAddWebsiteModal={() => setAddWebsiteModal(false)}
+      />
+      <ReportModal
+        website={websiteToReport}
+        resetWebsiteToReport={() => setWebsiteToReport(null)}
+      />
+
     </div>
   );
 }
