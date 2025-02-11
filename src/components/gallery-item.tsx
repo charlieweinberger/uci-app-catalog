@@ -4,20 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Bookmark, ExternalLink } from "lucide-react";
 
-import { AntAlmanac, Website } from "@/lib/mock-data";
-
-interface GalleryItemProps {
+export default function GalleryItem({ website, onClick, onSave, isSaved }: {
   website: Website
-  onClick?: () => void
-  onSave?: () => void
-  isSaved?: boolean
-  showSaveButton?: boolean
-  width?: string
-}
-
-export default function GalleryItem({ website, onClick, onSave, isSaved, showSaveButton=true, width="w-auto" }: GalleryItemProps) {
+  onClick: () => void
+  onSave: () => void
+  isSaved: boolean
+}) {
   return (
-    <div className={`${width} flex flex-col p-6 gap-4 cursor-pointer rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg`} onClick={onClick}>
+    <div className="w-auto flex flex-col p-6 gap-4 cursor-pointer rounded-lg border bg-card text-card-foreground shadow-sm transition-shadow hover:shadow-lg" onClick={onClick}>
 
       {/* Title + Links */}
       <div className="flex justify-between">
@@ -25,7 +19,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved, showSav
           {website.name}
         </h2>
         <div className="flex gap-2">
-          {showSaveButton && <Button
+          <Button
             variant="outline"
             size="icon"
             className="h-8 w-8"
@@ -35,7 +29,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved, showSav
             }}
           >
             <Bookmark className={isSaved ? "fill-current" : ""} />
-          </Button>}
+          </Button>
           <Button size="icon" className="h-8 w-8" asChild>
             <Link
               href={website.link}
@@ -45,7 +39,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved, showSav
               <ExternalLink />
             </Link>
           </Button>
-          </div>
+        </div>
       </div>
 
       {/* Short Description*/}
@@ -55,8 +49,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved, showSav
 
       {/* Image */}
       <Image
-        src={AntAlmanac}
-        // src={website.screenshot}
+        src={website.screenshot}
         alt={website.name}
         width={300}
         height={200}
