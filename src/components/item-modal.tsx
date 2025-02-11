@@ -25,34 +25,36 @@ export default function ItemModal({ website, isOpen, onClose, onSave, isSaved }:
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-2/3 max-w-3xl">
-        <div className="flex flex-row justify-between">
-          <DialogHeader>
+        
+        <DialogHeader>
+          <div className="flex flex-row justify-between">
             <DialogTitle>{website.name}</DialogTitle>
-            <DialogDescription>{website.shortDescription}</DialogDescription>
-          </DialogHeader>
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="icon"
-              className="h-8 w-8"
-              onClick={(e) => {
-                e.stopPropagation()
-                onSave?.()
-              }}
-            >
-              <Bookmark className={isSaved ? "fill-current" : ""} />
-            </Button>
-            <Button size="icon" className="h-8 w-8" asChild>
-              <Link
-                href={website.link}
-                onClick={(e) => e.stopPropagation()}
-                target="_blank"
+            <div className="flex gap-2">
+              <Button
+                variant="outline"
+                size="icon"
+                className="w-8 h-8"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onSave?.()
+                }}
               >
-                <ExternalLink />
-              </Link>
-            </Button>
+                <Bookmark className={isSaved ? "fill-current" : ""} />
+              </Button>
+              <Button size="icon" className="w-8 h-8" asChild>
+                <Link
+                  href={website.link}
+                  onClick={(e) => e.stopPropagation()}
+                  target="_blank"
+                >
+                  <ExternalLink />
+                </Link>
+              </Button>
+            </div>
           </div>
-        </div>
+          <DialogDescription>{website.shortDescription}</DialogDescription>
+        </DialogHeader>
+
         <div className="flex flex-col gap-4">
           <Image
             src={website.screenshot}
