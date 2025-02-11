@@ -44,7 +44,7 @@ export default function AddWebsiteModal({ isOpen, onClose }: {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-3/4 max-w-3xl h-min max-h-[calc(100vh-64px)] flex flex-col overflow-auto">
+      <DialogContent className="w-3/4 max-w-3xl h-min max-h-[calc(100vh-128px)] flex flex-col overflow-auto">
         
         <DialogHeader>
           <DialogTitle>Add New Website</DialogTitle>
