@@ -3,15 +3,17 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Check, ChevronsUpDown } from "lucide-react";
 
+import { Tag } from "@/lib/mock-data";
+
 export default function TagsCombobox({ options, selectedOptions, setSelectedOptions }: {
-  options: string[],
-  selectedOptions: string[],
-  setSelectedOptions: (options: string[]) => void
+  options: Tag[],
+  selectedOptions: Tag[],
+  setSelectedOptions: (options: Tag[]) => void
 }) {
 
-  const updateSelectedOptions = (option: string) => {
+  const updateSelectedOptions = (option: Tag) => {
     if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter((t) => t !== option));
+      setSelectedOptions(selectedOptions.filter((t: Tag) => t !== option));
     } else {
       setSelectedOptions([...selectedOptions, option]);
     }

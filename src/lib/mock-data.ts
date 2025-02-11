@@ -9,9 +9,8 @@ export interface Website {
   tags: string[]
   shortDescription: string
   link: string
-  longDescription: string
+  fullDescription: string
   creator: string
-  createdDate: string
 }
 
 export const websites: Website[] = [
@@ -22,10 +21,9 @@ export const websites: Website[] = [
     tags: ["official", "course planning"],
     shortDescription: "The main portal for university information and services.",
     link: "https://university.edu",
-    longDescription:
+    fullDescription:
       "This is the official university website where students can access course information, register for classes, view grades, and access various student services.",
     creator: "University IT Department",
-    createdDate: "2020-01-01",
   },
   {
     id: "2",
@@ -34,10 +32,9 @@ export const websites: Website[] = [
     tags: ["non-official", "course planning"],
     shortDescription: "A schedule planning and course exploration tool for UCI students.",
     link: "https://coursereviews.com",
-    longDescription:
+    fullDescription:
       "A platform created by students, for students. Here you can find honest reviews, ratings, and advice about courses from fellow students who have taken them.",
     creator: "Student Council",
-    createdDate: "2021-03-15",
   },
   {
     id: "3",
@@ -46,10 +43,9 @@ export const websites: Website[] = [
     tags: ["non-official", "food"],
     shortDescription: "Comprehensive guide to on-campus dining options.",
     link: "https://campusfood.com",
-    longDescription:
+    fullDescription:
       "Explore all the dining options available on campus, including menus, hours of operation, and student reviews. Find the perfect spot for your next meal!",
     creator: "Food Lovers Club",
-    createdDate: "2022-09-01",
   },
   {
     id: "4",
@@ -58,10 +54,9 @@ export const websites: Website[] = [
     tags: ["official", "course planning"],
     shortDescription: "The main portal for university information and services.",
     link: "https://university.edu",
-    longDescription:
+    fullDescription:
       "This is the official university website where students can access course information, register for classes, view grades, and access various student services.",
     creator: "University IT Department",
-    createdDate: "2020-01-01",
   },
   {
     id: "5",
@@ -70,11 +65,12 @@ export const websites: Website[] = [
     tags: ["non-official", "course planning"],
     shortDescription: "Peer reviews and ratings for university courses.",
     link: "https://coursereviews.com",
-    longDescription:
+    fullDescription:
       "A platform created by students, for students. Here you can find honest reviews, ratings, and advice about courses from fellow students who have taken them.",
     creator: "Student Council",
-    createdDate: "2021-03-15",
   },
 ]
 
-export const tags: string[] = ["official", "non-official", "course-planning", "food"];
+export type Tag = "official" | "non-official" | "course-planning" | "food";
+
+export const tags: Tag[] = ["official", "non-official", "course-planning", "food"];

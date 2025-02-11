@@ -43,10 +43,9 @@ export default function ItemModal({ website, isOpen, onClose }: {
               </Badge>
             ))}
           </div>
-          <p>{website.longDescription}</p>
+          <p>{website.fullDescription}</p>
           <div className="flex justify-between text-sm text-muted-foreground">
             <span>Creator: {website.creator}</span>
-            <span>Created: {website.createdDate}</span>
           </div>
           <a href={website.link} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
             Visit Website
