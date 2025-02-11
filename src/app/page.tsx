@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Gallery from "@/components/gallery";
+import GalleryItem from "@/components/gallery-item";
 import ItemModal from "@/components/item-modal";
 import AddWebsiteModal from "@/components/add-website-modal";
 import TagsCombobox from "@/components/tags-combobox";
@@ -31,14 +31,21 @@ export default function WebsiteGallery() {
     return matchesSearch && matchesTags && matchesSaved;
   });
 
-  const toggleSaved = (websiteId: string) => {
+  const toggleSaved = (websiteId: string | undefined) => {
+    if (!websiteId) return;
     setSavedWebsites((prev) =>
       prev.includes(websiteId) ? prev.filter((id) => id !== websiteId) : [...prev, websiteId],
     );
   };
 
+  const checkIfSaved = (website: Website | null) => {
+    if (!website) return false;
+    return savedWebsites.includes(website.id);
+  }
+
   return (
     <div className="p-8 flex flex-col gap-4">
+      
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold">UCI App Hub</h1>
         <Button
@@ -47,6 +54,7 @@ export default function WebsiteGallery() {
           Add Website
         </Button>
       </div>
+      
       <div className="flex flex-col sm:flex-row gap-4">
         <Input
           type="text"
@@ -68,9 +76,30 @@ export default function WebsiteGallery() {
           </Button>
         </div>
       </div>
-      <Gallery websiteList={filteredWebsites} setSelectedWebsite={setSelectedWebsite} toggleSaved={toggleSaved} savedWebsites={savedWebsites} />
-      <ItemModal website={selectedWebsite} isOpen={!!selectedWebsite} onClose={() => setSelectedWebsite(null)} />
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {filteredWebsites.map((website: Website) => (
+          <GalleryItem
+            key={website.id}
+            website={website}
+            onClick={() => setSelectedWebsite(website)}
+            onSave={() => toggleSaved(website.id)}
+            isSaved={savedWebsites.includes(website.id)}
+          />
+        ))}
+      </div>
+
+      <ItemModal
+        key={selectedWebsite?.id}
+        website={selectedWebsite}
+        isOpen={!!selectedWebsite}
+        onClose={() => setSelectedWebsite(null)}
+        onSave={() => toggleSaved(selectedWebsite?.id)}
+        isSaved={checkIfSaved(selectedWebsite)}
+      />
+            
       <AddWebsiteModal isOpen={addWebsiteModal} onClose={() => setAddWebsiteModal(!addWebsiteModal)} />
+    
     </div>
   );
 }

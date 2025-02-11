@@ -1,12 +1,8 @@
-import AntAlmanac from "./AntAlmanac.jpg";
-
-export { AntAlmanac };
-
 export const websites: Website[] = [
   {
     id: "1",
     name: "Zot4Plan",
-    screenshot: "/placeholder.svg?height=200&width=300",
+    screenshot: "/AntAlmanac.jpg",
     tags: ["official", "course-planning"],
     shortDescription: "The main portal for university information and services.",
     link: "https://university.edu",
@@ -17,7 +13,7 @@ export const websites: Website[] = [
   {
     id: "2",
     name: "AntAlmanac",
-    screenshot: "/placeholder.svg?height=200&width=300",
+    screenshot: "/AntAlmanac.jpg",
     tags: ["non-official", "course-planning"],
     shortDescription: "A schedule planning and course exploration tool for UCI students.",
     link: "https://coursereviews.com",
@@ -28,7 +24,7 @@ export const websites: Website[] = [
   {
     id: "3",
     name: "PeterPortal",
-    screenshot: "/placeholder.svg?height=200&width=300",
+    screenshot: "/AntAlmanac.jpg",
     tags: ["non-official", "food"],
     shortDescription: "Comprehensive guide to on-campus dining options.",
     link: "https://campusfood.com",
@@ -39,7 +35,7 @@ export const websites: Website[] = [
   {
     id: "4",
     name: "ZotSites",
-    screenshot: "/placeholder.svg?height=200&width=300",
+    screenshot: "/AntAlmanac.jpg",
     tags: ["official", "course-planning"],
     shortDescription: "The main portal for university information and services.",
     link: "https://university.edu",
@@ -50,7 +46,7 @@ export const websites: Website[] = [
   {
     id: "5",
     name: "CampusDish",
-    screenshot: "/placeholder.svg?height=200&width=300",
+    screenshot: "/AntAlmanac.jpg",
     tags: ["non-official", "course-planning"],
     shortDescription: "Peer reviews and ratings for university courses.",
     link: "https://coursereviews.com",
