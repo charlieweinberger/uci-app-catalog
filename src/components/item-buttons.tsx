@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Bookmark, Flag, ExternalLink } from "lucide-react";
+import { Bookmark, ExternalLink } from "lucide-react";
 
-export default function ItemButtons({ onSave, isSaved, onReport, websiteLink }: {
+export default function ItemButtons({ onSave, isSaved, websiteLink }: {
   onSave: () => void
   isSaved: boolean
-  onReport: () => void
   websiteLink: string
 }) {
   return (
@@ -21,18 +20,6 @@ export default function ItemButtons({ onSave, isSaved, onReport, websiteLink }: 
         }}
       >
         <Bookmark className={isSaved ? "fill-current" : ""} />
-      </Button>
-      
-      <Button
-        variant="outline"
-        size="icon"
-        className="w-8 h-8"
-        onClick={(e) => {
-          e.stopPropagation();
-          onReport();
-        }}
-      >
-        <Flag />
       </Button>
 
       <Button size="icon" className="w-8 h-8" asChild>

@@ -2,12 +2,11 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import ItemButtons from "@/components/item-buttons";
 
-export default function GalleryItem({ website, onClick, onSave, isSaved, onReport }: {
+export default function GalleryItem({ website, onClick, onSave, isSaved }: {
   website: Website
   onClick: () => void
   onSave: () => void
   isSaved: boolean
-  onReport: () => void
 }) {
 
   return (
@@ -16,7 +15,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved, onRepor
       {/* Title + Links */}
       <div className="flex justify-between">
         <h2 className="text-2xl font-semibold">{website.name}</h2>
-        <ItemButtons onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
+        <ItemButtons onSave={onSave} isSaved={isSaved} websiteLink={website.link} />
       </div>
 
       {/* Short Description*/}

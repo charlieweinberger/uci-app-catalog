@@ -11,12 +11,11 @@ import {
 
 import ItemButtons from "@/components/item-buttons";
 
-export default function ItemModal({ website, resetSelectedWebsite, onSave, isSaved, onReport }: {
+export default function ItemModal({ website, resetSelectedWebsite, onSave, isSaved }: {
   website: Website | null
   resetSelectedWebsite: () => void
   onSave: () => void
   isSaved: boolean
-  onReport: () => void
 }) {
   if (!website) return null;
 
@@ -27,7 +26,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
         <DialogHeader>
           <div className="flex flex-row justify-between">
             <DialogTitle>{website.name}</DialogTitle>
-            <ItemButtons onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
+            <ItemButtons onSave={onSave} isSaved={isSaved} websiteLink={website.link} />
           </div>
           <DialogDescription>{website.shortDescription}</DialogDescription>
         </DialogHeader>
@@ -50,7 +49,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
           <p>{website.fullDescription}</p>
           <div className="flex flex-row justify-between text-sm text-muted-foreground">
             <p>Creator: {website.creator}</p>
-            <p>Actively Maintained? {website.activelyMaintained}</p>
+            <p>Actively Maintained: {website.activelyMaintained}</p>
           </div>
         </div>
       </DialogContent>

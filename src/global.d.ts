@@ -17,9 +17,3 @@ interface User {
   userName: string
   userEmail: string
 }
-
-interface WebsiteReport {
-  website: Website
-  user: User
-  reason: string
-}
