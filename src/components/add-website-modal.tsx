@@ -57,7 +57,7 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
 
   // TODO send website to me
   const sendWebsiteToMe = (website: Website, user: User | null) => {
-    // TODO add activelyMaintained and dateAdded
+    // TODO add fields such as activelyMaintained, gitHubLink, dateAdded, or dateCreated
     console.log("Sending website by user to me: ", website, user);
   };
 
@@ -104,6 +104,7 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
           </AlertDescription>
         </Alert>
         
+        {/* // TODO create a simplified version of this, with the option to add more ("advanced details") */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
             <div>

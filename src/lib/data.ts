@@ -1,10 +1,10 @@
 export const websites: Website[] = [
   {
     name: "Zot4Plan",
-    link: "https://university.edu",
-    shortDescription: "The main portal for university information and services.",
+    link: "https://zot4plan.com/",
+    shortDescription: "A schedule planning tool that helps UCI students visualize their academic plan.",
     creator: "University IT Department",
-    tags: ["Official", "Course Planning"],
+    tags: ["Non-Official", "Course Planning"],
     screenshot: "/AntAlmanac.jpg",
     fullDescription:
     "This is the official university website where students can access course information, register for classes, view grades, and access various student services.",
