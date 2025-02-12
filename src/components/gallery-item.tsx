@@ -16,7 +16,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved, onRepor
       {/* Title + Links */}
       <div className="flex justify-between">
         <h2 className="text-2xl font-semibold">{website.name}</h2>
-        <ItemButtons onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
+        <ItemButtons fullVersion={false} onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
       </div>
 
       {/* Short Description*/}

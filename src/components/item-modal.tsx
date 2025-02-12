@@ -27,7 +27,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
         <DialogHeader>
           <div className="flex flex-row justify-between">
             <DialogTitle>{website.name}</DialogTitle>
-            <ItemButtons onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
+            <ItemButtons fullVersion={true} onSave={onSave} isSaved={isSaved} onReport={onReport} websiteLink={website.link} />
           </div>
           <DialogDescription>{website.shortDescription}</DialogDescription>
         </DialogHeader>
@@ -50,7 +50,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
           <p>{website.fullDescription}</p>
           <div className="flex flex-row justify-between text-sm text-muted-foreground">
             <p>Creator: {website.creator}</p>
-            <p>Actively Maintained? {website.activelyMaintained}</p>
+            <p>Actively Maintained: {website.activelyMaintained}</p>
           </div>
         </div>
       </DialogContent>
