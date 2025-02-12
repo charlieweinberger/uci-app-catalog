@@ -5,7 +5,6 @@ import { useState } from "react";
 import GalleryItem from "@/components/gallery-item";
 import ItemModal from "@/components/item-modal";
 import AddWebsiteModal from "@/components/add-website-modal";
-import ReportModal from "@/components/report-website-modal";
 import TagsCombobox from "@/components/tags-combobox";
 
 import { Input } from "@/components/ui/input";
@@ -21,7 +20,6 @@ export default function WebsiteGallery() {
   const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
   const [ addWebsiteModal, setAddWebsiteModal ] = useState<boolean>(false);
-  const [ websiteToReport, setWebsiteToReport ] = useState<Website | null>(null);
 
   const filteredWebsites = websites.filter((website) => {
     const matchesSearch =
@@ -89,7 +87,6 @@ export default function WebsiteGallery() {
             onClick={() => setSelectedWebsite(website)}
             onSave={() => updateSavedWebsites(website)}
             isSaved={savedWebsites.includes(website)}
-            onReport={() => setWebsiteToReport(website)}
           />
         ))}
       </div>
@@ -99,18 +96,10 @@ export default function WebsiteGallery() {
         resetSelectedWebsite={() => setSelectedWebsite(null)}
         onSave={() => updateSavedWebsites(selectedWebsite)}
         isSaved={checkIfSaved(selectedWebsite)}
-        onReport={() => {
-          setSelectedWebsite(null);
-          setWebsiteToReport(selectedWebsite);
-        }}
       />
       <AddWebsiteModal
         isOpen={addWebsiteModal}
         resetAddWebsiteModal={() => setAddWebsiteModal(false)}
-      />
-      <ReportModal
-        website={websiteToReport}
-        resetWebsiteToReport={() => setWebsiteToReport(null)}
       />
 
     </div>
