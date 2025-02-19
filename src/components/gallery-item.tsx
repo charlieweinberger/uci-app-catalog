@@ -18,9 +18,9 @@ export default function GalleryItem({ website, onClick, onSave, isSaved }: {
         <ItemButtons onSave={onSave} isSaved={isSaved} websiteLink={website.link} />
       </div>
 
-      {/* Short Description*/}
+      {/* Description*/}
       <p className="text-sm text-muted-foreground">
-        {website.shortDescription}
+        {website.description}
       </p>
 
       {/* Image */}

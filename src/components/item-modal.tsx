@@ -28,7 +28,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
             <DialogTitle>{website.name}</DialogTitle>
             <ItemButtons onSave={onSave} isSaved={isSaved} websiteLink={website.link} />
           </div>
-          <DialogDescription>{website.shortDescription}</DialogDescription>
+          <DialogDescription>{website.description}</DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col gap-4">
@@ -46,7 +46,6 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
               </Badge>
             ))}
           </div>
-          <p>{website.fullDescription}</p>
           <div className="flex flex-row justify-between text-sm text-muted-foreground">
             <p>Creator: {website.creator}</p>
             <p>Actively Maintained: {website.activelyMaintained}</p>

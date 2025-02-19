@@ -24,8 +24,7 @@ export default function WebsiteGallery() {
   const filteredWebsites = websites.filter((website) => {
     const matchesSearch =
       website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      website.shortDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      website.fullDescription.toLowerCase().includes(searchTerm.toLowerCase());
+      website.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTags = selectedTags.length === 0 || selectedTags.every((tag: Tag) => website.tags.includes(tag));
     const matchesSaved = !showSavedWebsitesOnly || savedWebsites.includes(website);
     return matchesSearch && matchesTags && matchesSaved;
