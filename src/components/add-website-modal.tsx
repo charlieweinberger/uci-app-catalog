@@ -5,7 +5,6 @@ import { Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import {
@@ -22,13 +21,12 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
   isOpen: boolean
   resetAddWebsiteModal: () => void
 }) {
-  const [websiteName, setWebsiteName] = useState("");
+  const [name, setName] = useState("");
   const [link, setLink] = useState("");
-  const [shortDescription, setShortDescription] = useState("");
+  const [description, setDescription] = useState("");
   const [creator, setCreator] = useState("");
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [screenshot, setScreenshot] = useState<File | string | null>(null);
-  const [fullDescription, setFullDescription] = useState("");
   const [canFollowUp, setCanFollowUp] = useState(false);
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -37,13 +35,12 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
 
   const onClose = () => {
     resetAddWebsiteModal();
-    setWebsiteName("");
+    setName("");
     setLink("");
-    setShortDescription("");
+    setDescription("");
     setCreator("");
     setSelectedTags([]);
     setScreenshot(null);
-    setFullDescription("");
     setCanFollowUp(false);
     setUserName("");
     setUserEmail("");
@@ -67,13 +64,12 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
     onClose();
 
     const website: Website = {
-      name: websiteName,
+      name: name,
       link: link,
-      shortDescription: shortDescription,
+      description: description,
       creator: creator,
       tags: selectedTags,
       screenshot: screenshot,
-      fullDescription: fullDescription,
       activelyMaintained: "Unknown"
     };
 
@@ -108,19 +104,19 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col md:grid md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="websiteName">Website Name *</Label>
-              <Input id="websiteName" value={websiteName} onChange={(e) => setWebsiteName(e.target.value)} required />
+              <Label htmlFor="name">Name *</Label>
+              <Input id="name" value={name} onChange={(e) => setName(e.target.value)} required />
             </div>
             <div>
               <Label htmlFor="link">Link *</Label>
               <Input id="link" type="url" value={link} onChange={(e) => setLink(e.target.value)} required />
             </div>
             <div>
-              <Label htmlFor="shortDescription">One-Sentence Description *</Label>
-              <Input id="shortDescription" value={shortDescription} onChange={(e) => setShortDescription(e.target.value)} required />
+              <Label htmlFor="description">Description *</Label>
+              <Input id="description" value={description} onChange={(e) => setDescription(e.target.value)} required />
             </div>
             <div>
-              <Label htmlFor="Creator">Website Creator</Label>
+              <Label htmlFor="Creator">Creator</Label>
               <Input id="creator" value={creator} onChange={(e) => setCreator(e.target.value)} />
             </div>
             <div>
@@ -136,15 +132,6 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
                 onChange={(e) => setScreenshot(e.target.files?.[0] || null)}
               />
             </div>
-          </div>
-          <div>
-            <Label htmlFor="fullDescription">Full Description</Label>
-            <Textarea
-              id="fullDescription"
-              className="h-32 max-h-32"
-              value={fullDescription}
-              onChange={(e) => setFullDescription(e.target.value)}
-            />
           </div>
           <div className="flex items-center gap-2">
             <Checkbox
