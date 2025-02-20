@@ -1,4 +1,4 @@
-type Tag = "Official" | "Non-Official" | "Course Planning" | "Food";
+type Tag = "Official" | "Unofficial" | "Course Info" | "Course Planning" | "ICSSC" | "API" | "AI" | "Food";
 type ActivelyMaintained = "Yes" | "No" | "Unknown";
 
 interface Website {
