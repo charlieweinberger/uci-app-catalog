@@ -13,13 +13,13 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { tags } from "@/lib/data";
 
 export default function TagsCombobox({ selectedTags, setSelectedTags }: {
-  selectedTags: Tag[],
-  setSelectedTags: (tags: Tag[]) => void
+  selectedTags: string[],
+  setSelectedTags: (tags: string[]) => void
 }) {
 
-  const updateSelectedTags = (tag: Tag) => {
+  const updateSelectedTags = (tag: string) => {
     if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter((t: Tag) => t !== tag));
+      setSelectedTags(selectedTags.filter((t: string) => t !== tag));
     } else {
       setSelectedTags([...selectedTags, tag]);
     }

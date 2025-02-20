@@ -15,7 +15,7 @@ import { websites } from "@/lib/data";
 export default function WebsiteGallery() {
 
   const [ searchTerm, setSearchTerm ] = useState("");
-  const [ selectedTags, setSelectedTags ] = useState<Tag[]>([]);
+  const [ selectedTags, setSelectedTags ] = useState<string[]>([]);
   const [ selectedWebsite, setSelectedWebsite ] = useState<Website | null>(null);
   const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
@@ -25,7 +25,7 @@ export default function WebsiteGallery() {
     const matchesSearch =
       website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       website.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTags = selectedTags.length === 0 || selectedTags.every((tag: Tag) => website.tags.includes(tag));
+    const matchesTags = selectedTags.length === 0 || selectedTags.every((tag: string) => website.tags.includes(tag));
     const matchesSaved = !showSavedWebsitesOnly || savedWebsites.includes(website);
     return matchesSearch && matchesTags && matchesSaved;
   });
