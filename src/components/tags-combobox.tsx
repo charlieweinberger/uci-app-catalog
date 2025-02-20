@@ -28,7 +28,7 @@ export default function TagsCombobox({ selectedTags, setSelectedTags }: {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="w-full justify-between">
+        <Button variant="defaultWhite" className="w-full justify-between">
           {selectedTags.length > 0 ? `${selectedTags.length} selected` : "Select Tags"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>

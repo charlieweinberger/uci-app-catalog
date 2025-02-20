@@ -35,9 +35,9 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
           <Image
             src={website.screenshot as string}
             alt={website.name}
-            width={600}
-            height={400}
-            className="w-full h-64 object-cover rounded"
+            width={1000}
+            height={1000}
+            className="w-full h-84 object-cover rounded border-uci-blue border-4"
           />
           <div className="flex flex-wrap gap-2">
             {website.tags.map((tag) => (

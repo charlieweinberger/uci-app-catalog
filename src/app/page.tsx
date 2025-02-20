@@ -48,7 +48,7 @@ export default function WebsiteGallery() {
     <div className="p-8 flex flex-col gap-4">
       
       <div className="flex justify-between">
-        <h1 className="text-3xl font-bold">UCI App Catalog</h1>
+        <h1 className="text-3xl font-bold text-uci-gold">UCI App Catalog</h1>
         <Button
           onClick={() => setAddWebsiteModal(!addWebsiteModal)}
         >
@@ -56,7 +56,7 @@ export default function WebsiteGallery() {
         </Button>
       </div>
       
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 mb-4">
         <Input
           type="text"
           placeholder="Search websites..."
@@ -69,9 +69,8 @@ export default function WebsiteGallery() {
             setSelectedTags={setSelectedTags}
           />
           <Button
-            variant={showSavedWebsitesOnly ? "default" : "outline"}
+            variant={showSavedWebsitesOnly ? "default" : "defaultWhite"}
             onClick={() => setShowSavedWebsitesOnly(!showSavedWebsitesOnly)}
-            className="mb-4"
           >
             Show Saved Only
           </Button>
