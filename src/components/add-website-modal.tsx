@@ -25,7 +25,7 @@ export default function AddWebsiteModal({ isOpen, resetAddWebsiteModal }: {
   const [link, setLink] = useState("");
   const [description, setDescription] = useState("");
   const [creator, setCreator] = useState("");
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [screenshot, setScreenshot] = useState<File | string | null>(null);
   const [canFollowUp, setCanFollowUp] = useState(false);
   const [userName, setUserName] = useState("");

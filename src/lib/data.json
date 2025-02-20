@@ -1,0 +1,65 @@
+[
+  {
+    "name": "AntAlmanac",
+    "link": "https://antalmanac.com/",
+    "description": "A schedule planning and course exploration tool for UCI students.",
+    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "tags": ["Unofficial", "ICSSC", "Course Info", "Course Planning"],
+    "screenshot": "/AntAlmanac.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "PeterPortal",
+    "link": "https://peterportal.org/",
+    "description": "A web application for course discovery and planning at UCI, featuring an enhanced catalogue and a 4-year planner.",
+    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "tags": ["Unofficial", "ICSSC", "Course Info", "Course Planning"],
+    "screenshot": "/PeterPortal.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "Anteater API",
+    "link": "https://docs.icssc.club/docs/developer/anteaterapi",
+    "description": "API that provides easy access to public data from UC Irvine. Developed for Anteaters, by Anteaters.",
+    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "tags": ["Unofficial", "ICSSC", "Course Info", "API"],
+    "screenshot": "/AnteaterAPI.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "Zotistics",
+    "link": "https://zotistics.com/",
+    "description": "View historical grade distributions and curves for UCI.",
+    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "tags": ["Unofficial", "ICSSC", "Course Info"],
+    "screenshot": "/Zotistics.png",
+    "activelyMaintained": "Unknown"
+  },
+  {
+    "name": "ZotGPT",
+    "link": "https://zotgpt.uci.edu/",
+    "description": "ZotGPT Chat is a free AI tool for UCI students, faculty, and staff, offering features like multiple models, chat history, file uploads, and a large context window.",
+    "creator": "UCI Office of Information Technology",
+    "tags": ["Official", "AI", "API"],
+    "screenshot": "/ZotGPT.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "ZotBites",
+    "link": "https://zotbites.basicneeds.uci.edu/",
+    "description": "A text-based notification system that invites students to be an after-event guest when a catered event is over and excess food is available",
+    "creator": "UCI Basic Needs Center",
+    "tags": ["Official", "Food"],
+    "screenshot": "/ZotBites.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "ZotSites",
+    "link": "https://zotsites.com/",
+    "description": "A UCI-specific search engine powered by generative AI that helps students navigate resources, tips and information across the plethora of UCI-related websites.",
+    "creator": "David Culciar & Arjun Dabir",
+    "tags": ["Unofficial", "AI"],
+    "screenshot": "/ZotSites.png",
+    "activelyMaintained": "Yes"
+  }
+]

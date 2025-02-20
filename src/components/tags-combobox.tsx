@@ -13,13 +13,13 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { tags } from "@/lib/data";
 
 export default function TagsCombobox({ selectedTags, setSelectedTags }: {
-  selectedTags: Tag[],
-  setSelectedTags: (tags: Tag[]) => void
+  selectedTags: string[],
+  setSelectedTags: (tags: string[]) => void
 }) {
 
-  const updateSelectedTags = (tag: Tag) => {
+  const updateSelectedTags = (tag: string) => {
     if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter((t: Tag) => t !== tag));
+      setSelectedTags(selectedTags.filter((t: string) => t !== tag));
     } else {
       setSelectedTags([...selectedTags, tag]);
     }
@@ -28,7 +28,7 @@ export default function TagsCombobox({ selectedTags, setSelectedTags }: {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline" className="w-full justify-between">
+        <Button variant="defaultWhite" className="w-full justify-between">
           {selectedTags.length > 0 ? `${selectedTags.length} selected` : "Select Tags"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>

@@ -10,6 +10,12 @@ export default {
   theme: {
   	extend: {
   		colors: {
+
+				"uci-blue": "#255799",
+				"uci-gold": "#fecc07",
+				"uci-dark-blue": "#1b3d6d",
+				"uci-dark-gold": "#f0ab00",
+
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
