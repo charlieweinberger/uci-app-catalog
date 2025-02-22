@@ -6,7 +6,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved }: {
   website: Website
   onClick: () => void
   onSave: () => void
-  isSaved: boolean
+  isSaved: () => boolean
 }) {
 
   return (

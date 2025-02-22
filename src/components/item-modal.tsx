@@ -15,7 +15,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
   website: Website | null
   resetSelectedWebsite: () => void
   onSave: () => void
-  isSaved: boolean
+  isSaved: () => boolean
 }) {
   if (!website) return null;
 

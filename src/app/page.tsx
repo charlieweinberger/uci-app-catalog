@@ -21,20 +21,21 @@ export default function WebsiteGallery() {
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
   const [ addWebsiteModal, setAddWebsiteModal ] = useState(false);
 
+  const checkIfSaved = (website: Website | null) => {
+    if (!website) return false;
+    return savedWebsites.some(savedWebsite => savedWebsite.name === website.name);
+  }
+
   const filteredWebsites = websites.filter((website) => {
-    
     const matchesSearch =
       website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       website.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesTags =
-      selectedTags.length === 0 ||
-      selectedTags.every((tag: string) => website.tags.includes(tag));
+      selectedTags.length === 0 || selectedTags.every(tag => website.tags.includes(tag));
     const matchesSaved =
       !showSavedWebsitesOnly ||
-      savedWebsites.includes(website);
-    
+      checkIfSaved(website);
     return matchesSearch && matchesTags && matchesSaved;
-  
   });
 
   useEffect(() => {
@@ -46,17 +47,12 @@ export default function WebsiteGallery() {
 
   const updateSavedWebsites = (website: Website | null) => {
     if (!website) return;
-    const newSavedWebsites = (savedWebsites.includes(website)) 
-      ? savedWebsites.filter(savedWebsite => savedWebsite !== website)
+    const newSavedWebsites = checkIfSaved(website)
+      ? savedWebsites.filter(savedWebsite => savedWebsite.name !== website.name)
       : [...savedWebsites, website];
     setSavedWebsites(newSavedWebsites);
     localStorage.setItem("savedWebsites", JSON.stringify(newSavedWebsites));
   };
-
-  const checkIfSaved = (website: Website | null) => {
-    if (!website) return false;
-    return savedWebsites.includes(website);
-  }
 
   return (
     <div className="p-8 flex flex-col gap-4">
@@ -98,7 +94,7 @@ export default function WebsiteGallery() {
             website={website}
             onClick={() => setSelectedWebsite(website)}
             onSave={() => updateSavedWebsites(website)}
-            isSaved={savedWebsites.includes(website)}
+            isSaved={() => checkIfSaved(website)}
           />
         ))}
       </div>
@@ -107,7 +103,7 @@ export default function WebsiteGallery() {
         website={selectedWebsite}
         resetSelectedWebsite={() => setSelectedWebsite(null)}
         onSave={() => updateSavedWebsites(selectedWebsite)}
-        isSaved={checkIfSaved(selectedWebsite)}
+        isSaved={() => checkIfSaved(selectedWebsite)}
       />
       <AddWebsiteModal
         isOpen={addWebsiteModal}
