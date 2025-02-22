@@ -8,8 +8,9 @@ interface Website {
   activelyMaintained: string
 };
 
-interface User {
-  exists: boolean
-  userName: string
+interface SuggestedWebsite {
+  name: string
+  link: string
+  description: string
   userEmail: string
 };

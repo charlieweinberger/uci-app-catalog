@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import GalleryItem from "@/components/gallery-item";
 import ItemModal from "@/components/item-modal";
-import AddWebsiteModal from "@/components/add-website-modal";
+import SuggestWebsiteModal from "@/components/suggest-website-modal";
 import TagsCombobox from "@/components/tags-combobox";
 
 import { Input } from "@/components/ui/input";
@@ -19,7 +19,23 @@ export default function WebsiteGallery() {
   const [ selectedWebsite, setSelectedWebsite ] = useState<Website | null>(null);
   const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
-  const [ addWebsiteModal, setAddWebsiteModal ] = useState(false);
+  const [ suggestWebsiteModal, setSuggestWebsiteModal ] = useState(false);
+
+  useEffect(() => {
+    const localSavedWebsites = localStorage.getItem("savedWebsites");
+    if (localSavedWebsites) {
+      setSavedWebsites(JSON.parse(localSavedWebsites));
+    }
+  }, []);
+
+  const updateSavedWebsites = (website: Website | null) => {
+    if (!website) return;
+    const newSavedWebsites = checkIfSaved(website)
+      ? savedWebsites.filter(savedWebsite => savedWebsite.name !== website.name)
+      : [...savedWebsites, website];
+    setSavedWebsites(newSavedWebsites);
+    localStorage.setItem("savedWebsites", JSON.stringify(newSavedWebsites));
+  };
 
   const checkIfSaved = (website: Website | null) => {
     if (!website) return false;
@@ -38,31 +54,15 @@ export default function WebsiteGallery() {
     return matchesSearch && matchesTags && matchesSaved;
   });
 
-  useEffect(() => {
-    const localSavedWebsites = localStorage.getItem("savedWebsites");
-    if (localSavedWebsites) {
-      setSavedWebsites(JSON.parse(localSavedWebsites));
-    }
-  }, []);
-
-  const updateSavedWebsites = (website: Website | null) => {
-    if (!website) return;
-    const newSavedWebsites = checkIfSaved(website)
-      ? savedWebsites.filter(savedWebsite => savedWebsite.name !== website.name)
-      : [...savedWebsites, website];
-    setSavedWebsites(newSavedWebsites);
-    localStorage.setItem("savedWebsites", JSON.stringify(newSavedWebsites));
-  };
-
   return (
     <div className="p-8 flex flex-col gap-4">
       
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold text-uci-gold">UCI App Catalog</h1>
         <Button
-          onClick={() => setAddWebsiteModal(!addWebsiteModal)}
+          onClick={() => setSuggestWebsiteModal(!suggestWebsiteModal)}
         >
-          Add Website
+          Suggest Website
         </Button>
       </div>
       
@@ -105,9 +105,9 @@ export default function WebsiteGallery() {
         onSave={() => updateSavedWebsites(selectedWebsite)}
         isSaved={() => checkIfSaved(selectedWebsite)}
       />
-      <AddWebsiteModal
-        isOpen={addWebsiteModal}
-        resetAddWebsiteModal={() => setAddWebsiteModal(false)}
+      <SuggestWebsiteModal
+        isOpen={suggestWebsiteModal}
+        resetSuggestWebsiteModal={() => setSuggestWebsiteModal(false)}
       />
 
     </div>
