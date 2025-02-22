@@ -36,6 +36,15 @@
     "activelyMaintained": "Unknown"
   },
   {
+    "name": "ZotNFound",
+    "link": "https://zotnfound.com/",
+    "description": "A platform for UCI students to effortlessly locate and recover lost or found items.",
+    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "tags": ["Unofficial", "ICSSC", "Lost & Found"],
+    "screenshot": "/ZotNFound.png",
+    "activelyMaintained": "Yes"
+  },
+  {
     "name": "ZotGPT",
     "link": "https://zotgpt.uci.edu/",
     "description": "ZotGPT Chat is a free AI tool for UCI students, faculty, and staff, offering features like multiple models, chat history, file uploads, and a large context window.",
