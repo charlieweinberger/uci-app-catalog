@@ -4,7 +4,7 @@
     "link": "https://antalmanac.com/",
     "description": "A schedule planning and course exploration tool for UCI students.",
     "creator": "Information & Computer Science Student Council (ICSSC)",
-    "tags": ["Unofficial", "ICSSC", "Course Info", "Course Planning"],
+    "tags": ["Unofficial", "ICSSC", "Course Info", "Course Planning", "Map"],
     "screenshot": "/AntAlmanac.png",
     "activelyMaintained": "Yes"
   },
@@ -40,7 +40,7 @@
     "link": "https://zotnfound.com/",
     "description": "A platform for UCI students to effortlessly locate and recover lost or found items.",
     "creator": "Information & Computer Science Student Council (ICSSC)",
-    "tags": ["Unofficial", "ICSSC", "Lost & Found"],
+    "tags": ["Unofficial", "ICSSC", "Lost & Found", "Map"],
     "screenshot": "/ZotNFound.png",
     "activelyMaintained": "Yes"
   },
@@ -67,8 +67,34 @@
     "link": "https://zotsites.com/",
     "description": "A UCI-specific search engine powered by generative AI that helps students navigate resources, tips and information across the plethora of UCI-related websites.",
     "creator": "David Culciar & Arjun Dabir",
-    "tags": ["Unofficial", "AI"],
+    "tags": ["Official", "AI"],
     "screenshot": "/ZotSites.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "Antscoper",
+    "link": "https://antscoper.appspot.com/",
+    "description": "A tool for viewing the class schedule of every single classroom and lecture hall at UCI.",
+    "creator": "Ted Michael Celis (Krazete)",
+    "tags": ["Unofficial", "Course Info", "Map"],
+    "screenshot": "/Antscoper.png",
+    "activelyMaintained": "No"
+  },
+  {
+    "name": "UCI App Catalog",
+    "link": "https://uci-app-catalog.vercel.app/",
+    "description": "An unofficial collection of uci-related websites and apps. Find, save, and suggest websites for yourself to others to use while at UCI to make your daily lives better!",
+    "creator": "Charlie Weinberger",
+    "tags": ["Unofficial"],
+    "screenshot": "/UCIAppCatalog.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "AntAtlas",
+    "link": "https://ant-atlas.awesome-e.dev/",
+    "description": "A website that allows for quick access of information regarding dining hall food, bus schedules, course notifications, and library space availability",
+    "tags": ["Unofficial", "Food", "Transportation", "Library", "Course Planning"],
+    "screenshot": "/AntAtlas.png",
     "activelyMaintained": "Yes"
   }
 ]

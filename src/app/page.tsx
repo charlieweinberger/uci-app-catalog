@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 
-import GalleryItem from "@/components/gallery-item";
-import ItemModal from "@/components/item-modal";
-import SuggestWebsiteModal from "@/components/suggest-website-modal";
-import TagsCombobox from "@/components/tags-combobox";
+import GalleryItem from "@/components/GalleryItem";
+import ItemModal from "@/components/ItemModal";
+import SuggestWebsiteModal from "@/components/SuggestWebsiteModal";
+import TagsCombobox from "@/components/TagsCombobox";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";

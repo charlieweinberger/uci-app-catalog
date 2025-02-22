@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "UCI App Catalog",
-  description: "A catalog for all UCI apps and websites",
+  description: "The UCI App Catalog is an unofficial collection of uci-related websites and apps. Find, save, and suggest websites for yourself to others to use while at UCI to make your daily lives better!",
 }
 
 export default function RootLayout({

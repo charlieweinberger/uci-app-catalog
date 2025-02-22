@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
@@ -9,7 +8,8 @@ import {
   DialogDescription
 } from "@/components/ui/dialog";
 
-import ItemButtons from "@/components/item-buttons";
+import ItemButtons from "@/components/ItemButtons";
+import TagBadges from "@/components/TagBadges";
 
 export default function ItemModal({ website, resetSelectedWebsite, onSave, isSaved }: {
   website: Website | null
@@ -39,13 +39,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
             height={1000}
             className="w-full h-84 object-cover rounded border-uci-blue border-4"
           />
-          <div className="flex flex-wrap gap-2">
-            {website.tags.map((tag) => (
-              <Badge key={tag}>
-                {tag}
-              </Badge>
-            ))}
-          </div>
+          <TagBadges website={website} />
           <div className="flex flex-row justify-between text-sm text-muted-foreground">
             <p>Creator: {website.creator}</p>
             <p>Actively Maintained: {website.activelyMaintained}</p>
