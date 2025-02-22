@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import GalleryItem from "@/components/gallery-item";
 import ItemModal from "@/components/item-modal";
-import AddWebsiteModal from "@/components/add-website-modal";
+import SuggestWebsiteModal from "@/components/suggest-website-modal";
 import TagsCombobox from "@/components/tags-combobox";
 
 import { Input } from "@/components/ui/input";
@@ -19,23 +19,7 @@ export default function WebsiteGallery() {
   const [ selectedWebsite, setSelectedWebsite ] = useState<Website | null>(null);
   const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
-  const [ addWebsiteModal, setAddWebsiteModal ] = useState(false);
-
-  const filteredWebsites = websites.filter((website) => {
-    
-    const matchesSearch =
-      website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      website.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTags =
-      selectedTags.length === 0 ||
-      selectedTags.every((tag: string) => website.tags.includes(tag));
-    const matchesSaved =
-      !showSavedWebsitesOnly ||
-      savedWebsites.includes(website);
-    
-    return matchesSearch && matchesTags && matchesSaved;
-  
-  });
+  const [ suggestWebsiteModal, setSuggestWebsiteModal ] = useState(false);
 
   useEffect(() => {
     const localSavedWebsites = localStorage.getItem("savedWebsites");
@@ -46,8 +30,8 @@ export default function WebsiteGallery() {
 
   const updateSavedWebsites = (website: Website | null) => {
     if (!website) return;
-    const newSavedWebsites = (savedWebsites.includes(website)) 
-      ? savedWebsites.filter(savedWebsite => savedWebsite !== website)
+    const newSavedWebsites = checkIfSaved(website)
+      ? savedWebsites.filter(savedWebsite => savedWebsite.name !== website.name)
       : [...savedWebsites, website];
     setSavedWebsites(newSavedWebsites);
     localStorage.setItem("savedWebsites", JSON.stringify(newSavedWebsites));
@@ -55,8 +39,20 @@ export default function WebsiteGallery() {
 
   const checkIfSaved = (website: Website | null) => {
     if (!website) return false;
-    return savedWebsites.includes(website);
+    return savedWebsites.some(savedWebsite => savedWebsite.name === website.name);
   }
+
+  const filteredWebsites = websites.filter((website) => {
+    const matchesSearch =
+      website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      website.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesTags =
+      selectedTags.length === 0 || selectedTags.every(tag => website.tags.includes(tag));
+    const matchesSaved =
+      !showSavedWebsitesOnly ||
+      checkIfSaved(website);
+    return matchesSearch && matchesTags && matchesSaved;
+  });
 
   return (
     <div className="p-8 flex flex-col gap-4">
@@ -64,9 +60,9 @@ export default function WebsiteGallery() {
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold text-uci-gold">UCI App Catalog</h1>
         <Button
-          onClick={() => setAddWebsiteModal(!addWebsiteModal)}
+          onClick={() => setSuggestWebsiteModal(!suggestWebsiteModal)}
         >
-          Add Website
+          Suggest Website
         </Button>
       </div>
       
@@ -98,7 +94,7 @@ export default function WebsiteGallery() {
             website={website}
             onClick={() => setSelectedWebsite(website)}
             onSave={() => updateSavedWebsites(website)}
-            isSaved={savedWebsites.includes(website)}
+            isSaved={() => checkIfSaved(website)}
           />
         ))}
       </div>
@@ -107,11 +103,11 @@ export default function WebsiteGallery() {
         website={selectedWebsite}
         resetSelectedWebsite={() => setSelectedWebsite(null)}
         onSave={() => updateSavedWebsites(selectedWebsite)}
-        isSaved={checkIfSaved(selectedWebsite)}
+        isSaved={() => checkIfSaved(selectedWebsite)}
       />
-      <AddWebsiteModal
-        isOpen={addWebsiteModal}
-        resetAddWebsiteModal={() => setAddWebsiteModal(false)}
+      <SuggestWebsiteModal
+        isOpen={suggestWebsiteModal}
+        resetSuggestWebsiteModal={() => setSuggestWebsiteModal(false)}
       />
 
     </div>
