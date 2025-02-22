@@ -9,7 +9,7 @@ interface Website {
 };
 
 interface SuggestedWebsite {
-  name: string
+  websiteName: string
   link: string
   description: string
   userEmail: string
