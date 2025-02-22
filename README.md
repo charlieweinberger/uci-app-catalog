@@ -16,5 +16,5 @@ The UCI App Catalog features a growing collection of UCI-related apps, with a fo
 
 - Frontend: React, Next.js, TypeScript
 - Styling: Tailwind CSS, shadcn/ui
-- Deployment & analytics: Vercel
+- Deployment & Analytics: Vercel
 - Email (for suggestions): Resend

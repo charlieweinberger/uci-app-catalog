@@ -93,6 +93,7 @@
     "name": "AntAtlas",
     "link": "https://ant-atlas.awesome-e.dev/",
     "description": "A website that allows for quick access of information regarding dining hall food, bus schedules, course notifications, and library space availability",
+    "creator": "Ethan Wang",
     "tags": ["Unofficial", "Food", "Transportation", "Library", "Course Planning"],
     "screenshot": "/AntAtlas.png",
     "activelyMaintained": "Yes"

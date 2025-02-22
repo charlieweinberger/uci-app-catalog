@@ -2,7 +2,7 @@ interface Website {
   name: string
   link: string
   description: string
-  creator?: string
+  creator: string
   tags: string[]
   screenshot: string
   activelyMaintained: string
