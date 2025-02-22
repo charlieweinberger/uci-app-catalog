@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import GalleryItem from "@/components/gallery-item";
 import ItemModal from "@/components/item-modal";
@@ -19,24 +19,38 @@ export default function WebsiteGallery() {
   const [ selectedWebsite, setSelectedWebsite ] = useState<Website | null>(null);
   const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
-  const [ addWebsiteModal, setAddWebsiteModal ] = useState<boolean>(false);
+  const [ addWebsiteModal, setAddWebsiteModal ] = useState(false);
 
   const filteredWebsites = websites.filter((website) => {
+    
     const matchesSearch =
       website.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       website.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesTags = selectedTags.length === 0 || selectedTags.every((tag: string) => website.tags.includes(tag));
-    const matchesSaved = !showSavedWebsitesOnly || savedWebsites.includes(website);
+    const matchesTags =
+      selectedTags.length === 0 ||
+      selectedTags.every((tag: string) => website.tags.includes(tag));
+    const matchesSaved =
+      !showSavedWebsitesOnly ||
+      savedWebsites.includes(website);
+    
     return matchesSearch && matchesTags && matchesSaved;
+  
   });
+
+  useEffect(() => {
+    const localSavedWebsites = localStorage.getItem("savedWebsites");
+    if (localSavedWebsites) {
+      setSavedWebsites(JSON.parse(localSavedWebsites));
+    }
+  }, []);
 
   const updateSavedWebsites = (website: Website | null) => {
     if (!website) return;
-    setSavedWebsites(
-      savedWebsites.includes(website)
-        ? savedWebsites.filter((savedWebsite) => savedWebsite !== website)
-        : [...savedWebsites, website]
-    );
+    const newSavedWebsites = (savedWebsites.includes(website)) 
+      ? savedWebsites.filter(savedWebsite => savedWebsite !== website)
+      : [...savedWebsites, website];
+    setSavedWebsites(newSavedWebsites);
+    localStorage.setItem("savedWebsites", JSON.stringify(newSavedWebsites));
   };
 
   const checkIfSaved = (website: Website | null) => {
