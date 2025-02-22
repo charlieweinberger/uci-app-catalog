@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import ItemButtons from "@/components/item-buttons";
+
+import ItemButtons from "@/components/ItemButtons";
+import TagBadges from "@/components/TagBadges";
 
 export default function GalleryItem({ website, onClick, onSave, isSaved }: {
   website: Website
@@ -33,13 +34,7 @@ export default function GalleryItem({ website, onClick, onSave, isSaved }: {
       />
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-2">
-        {website.tags.map((tag) => (
-          <Badge key={tag}>
-            {tag}
-          </Badge>
-        ))}
-      </div>
+      <TagBadges website={website} />
 
     </div>
   )
