@@ -1,6 +1,6 @@
 <h1 align="center">UCI App Catalog</h1>
 
-<h3 align="center">An unofficial collection of uci-related websites and apps. Find, save, and suggest websites for yourself to others to use while at UCI to make your daily lives better!
+<h3 align="center">An unofficial collection of UCI-related websites and apps. Find, save, and suggest websites for yourself to others to use while at UCI to make your daily lives better!
 
 </h3>
 

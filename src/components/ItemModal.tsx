@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import {
   Dialog,
   DialogContent,
@@ -9,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 
 import ItemButtons from "@/components/ItemButtons";
+import WebsiteImage from "@/components/WebsiteImage";
 import TagBadges from "@/components/TagBadges";
 
 export default function ItemModal({ website, resetSelectedWebsite, onSave, isSaved }: {
@@ -32,13 +31,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
         </DialogHeader>
 
         <div className="flex flex-col gap-4">
-          <Image
-            src={website.screenshot as string}
-            alt={website.name}
-            width={1000}
-            height={1000}
-            className="w-full h-84 object-cover rounded border-uci-blue border-4"
-          />
+          <WebsiteImage website={website} type="modal" />
           <TagBadges website={website} />
           <div className="flex flex-row justify-between text-sm text-muted-foreground">
             <p>Creator: {website.creator}</p>
