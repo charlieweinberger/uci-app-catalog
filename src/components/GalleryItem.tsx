@@ -2,42 +2,24 @@ import ItemButtons from "@/components/ItemButtons";
 import WebsiteImage from "@/components/WebsiteImage";
 import TagBadges from "@/components/TagBadges";
 
-export default function GalleryItem({ website, onClick, onSave, isSaved }: {
+export default function GalleryItem({ website, onClick, onSave, isSaved, showImages }: {
   website: Website
   onClick: () => void
   onSave: () => void
   isSaved: () => boolean
+  showImages: boolean
 }) {
-
   return (
-    <div className="w-auto flex flex-col p-6 gap-4 cursor-pointer rounded-lg bg-white border shadow-sm transition-shadow hover:shadow-lg" onClick={onClick}>
-
-      {/* Title + Links */}
+    <div className="w-auto flex flex-col p-6 gap-4 cursor-pointer rounded-lg bg-white hover:bg-gray-100" onClick={onClick}>
       <div className="flex justify-between">
         <h2 className="text-2xl font-semibold text-uci-blue">{website.name}</h2>
         <ItemButtons onSave={onSave} isSaved={isSaved} websiteLink={website.link} />
       </div>
-
-      {/* Description*/}
       <p className="text-sm text-muted-foreground">
         {website.description}
       </p>
-
-      {/* Image */}
-      {/* <Image
-        src={website.screenshot as string}
-        alt={website.name}
-        width={200}
-        height={200}
-        className="w-full h-40 object-cover rounded border-uci-blue border-4"
-      /> */}
-      {/* <div className="max-h-40"> */}
-        <WebsiteImage website={website} type="gallery" />
-      {/* </div> */}
-
-      {/* Tags */}
+      {showImages && <WebsiteImage website={website} type="gallery" />}
       <TagBadges website={website} />
-
     </div>
   )
 }

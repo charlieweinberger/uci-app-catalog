@@ -17,11 +17,9 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
   isSaved: () => boolean
 }) {
   if (!website) return null;
-
   return (
     <Dialog open={!!website} onOpenChange={resetSelectedWebsite}>
       <DialogContent className="w-3/4 max-w-3xl max-h-[calc(100vh-192px)] overflow-auto">
-        
         <DialogHeader>
           <div className="flex flex-row justify-between">
             <DialogTitle>{website.name}</DialogTitle>
@@ -29,7 +27,6 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
           </div>
           <DialogDescription>{website.description}</DialogDescription>
         </DialogHeader>
-
         <div className="flex flex-col gap-4">
           <WebsiteImage website={website} type="modal" />
           <TagBadges website={website} />
