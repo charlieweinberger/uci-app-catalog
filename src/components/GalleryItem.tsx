@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import ItemButtons from "@/components/ItemButtons";
+import WebsiteImage from "@/components/WebsiteImage";
 import TagBadges from "@/components/TagBadges";
 
 export default function GalleryItem({ website, onClick, onSave, isSaved }: {
@@ -25,13 +24,16 @@ export default function GalleryItem({ website, onClick, onSave, isSaved }: {
       </p>
 
       {/* Image */}
-      <Image
+      {/* <Image
         src={website.screenshot as string}
         alt={website.name}
-        width={1000}
-        height={1000}
+        width={200}
+        height={200}
         className="w-full h-40 object-cover rounded border-uci-blue border-4"
-      />
+      /> */}
+      {/* <div className="max-h-40"> */}
+        <WebsiteImage website={website} type="gallery" />
+      {/* </div> */}
 
       {/* Tags */}
       <TagBadges website={website} />

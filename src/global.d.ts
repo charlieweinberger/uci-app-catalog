@@ -14,3 +14,5 @@ interface SuggestedWebsite {
   description: string
   userEmail: string
 };
+
+type ImageType = "gallery" | "modal";

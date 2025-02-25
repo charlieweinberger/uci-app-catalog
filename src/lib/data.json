@@ -83,7 +83,7 @@
   {
     "name": "UCI App Catalog",
     "link": "https://uci-app-catalog.vercel.app/",
-    "description": "An unofficial collection of uci-related websites and apps. Find, save, and suggest websites for yourself to others to use while at UCI to make your daily lives better!",
+    "description": "An unofficial collection of UCI-related websites and apps. Find, save, and suggest websites for yourself to others to use while at UCI to make your daily lives better!",
     "creator": "Charlie Weinberger",
     "tags": ["Unofficial"],
     "screenshot": "/UCIAppCatalog.png",
@@ -94,8 +94,26 @@
     "link": "https://ant-atlas.awesome-e.dev/",
     "description": "A website that allows for quick access of information regarding dining hall food, bus schedules, course notifications, and library space availability",
     "creator": "Ethan Wang",
-    "tags": ["Unofficial", "Food", "Transportation", "Library", "Course Planning"],
+    "tags": ["Unofficial", "Food", "Transportation", "Study Room", "Course Planning"],
     "screenshot": "/AntAtlas.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "UCI Now",
+    "link": "https://studentcenter.uci.edu/home/download-the-apps/",
+    "description": "A mobile app that allows students to search ring mall activities, view a calender list of events at the student center, navigate around the student center, and reserve a room in the Courtyard Study Lounge (CSL).",
+    "creator": "UCI Student Center",
+    "tags": ["Official", "Events", "Map", "Study Room"],
+    "screenshot": "/UCINow.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "ZotFinder",
+    "link": "https://studentcenter.uci.edu/home/download-the-apps/",
+    "description": "A mobile app mapping service with detailed routes and estimated travel times to UCI departments, buildings and services not found in Google Maps or other map providers.",
+    "creator": "UCI Student Center",
+    "tags": ["Official", "Map"],
+    "screenshot": "/ZotFinder.png",
     "activelyMaintained": "Yes"
   }
 ]
