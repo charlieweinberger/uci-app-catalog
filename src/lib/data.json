@@ -3,7 +3,7 @@
     "name": "AntAlmanac",
     "link": "https://antalmanac.com/",
     "description": "A schedule planning and course exploration tool for UCI students.",
-    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "developer": "Information & Computer Science Student Council (ICSSC)",
     "tags": ["Unofficial", "ICSSC", "Course Info", "Course Planning", "Map"],
     "screenshot": "/AntAlmanac.png",
     "activelyMaintained": "Yes"
@@ -12,7 +12,7 @@
     "name": "PeterPortal",
     "link": "https://peterportal.org/",
     "description": "A web application for course discovery and planning at UCI, featuring an enhanced catalogue and a 4-year planner.",
-    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "developer": "Information & Computer Science Student Council (ICSSC)",
     "tags": ["Unofficial", "ICSSC", "Course Info", "Course Planning"],
     "screenshot": "/PeterPortal.png",
     "activelyMaintained": "Yes"
@@ -21,7 +21,7 @@
     "name": "Anteater API",
     "link": "https://docs.icssc.club/docs/developer/anteaterapi",
     "description": "API that provides easy access to public data from UC Irvine. Developed for Anteaters, by Anteaters.",
-    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "developer": "Information & Computer Science Student Council (ICSSC)",
     "tags": ["Unofficial", "ICSSC", "Course Info", "API"],
     "screenshot": "/AnteaterAPI.png",
     "activelyMaintained": "Yes"
@@ -30,7 +30,7 @@
     "name": "Zotistics",
     "link": "https://zotistics.com/",
     "description": "View historical grade distributions and curves for UCI.",
-    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "developer": "Information & Computer Science Student Council (ICSSC)",
     "tags": ["Unofficial", "ICSSC", "Course Info"],
     "screenshot": "/Zotistics.png",
     "activelyMaintained": "Unknown"
@@ -39,7 +39,7 @@
     "name": "ZotNFound",
     "link": "https://zotnfound.com/",
     "description": "A platform for UCI students to effortlessly locate and recover lost or found items.",
-    "creator": "Information & Computer Science Student Council (ICSSC)",
+    "developer": "Information & Computer Science Student Council (ICSSC)",
     "tags": ["Unofficial", "ICSSC", "Lost & Found", "Map"],
     "screenshot": "/ZotNFound.png",
     "activelyMaintained": "Yes"
@@ -48,7 +48,7 @@
     "name": "ZotGPT",
     "link": "https://zotgpt.uci.edu/",
     "description": "ZotGPT Chat is a free AI tool for UCI students, faculty, and staff, offering features like multiple models, chat history, file uploads, and a large context window.",
-    "creator": "UCI Office of Information Technology",
+    "developer": "UCI Office of Information Technology",
     "tags": ["Official", "AI", "API"],
     "screenshot": "/ZotGPT.png",
     "activelyMaintained": "Yes"
@@ -57,7 +57,7 @@
     "name": "ZotBites",
     "link": "https://zotbites.basicneeds.uci.edu/",
     "description": "A text-based notification system that invites students to be an after-event guest when a catered event is over and excess food is available.",
-    "creator": "UCI Basic Needs Center",
+    "developer": "UCI Basic Needs Center",
     "tags": ["Official", "Food"],
     "screenshot": "/ZotBites.png",
     "activelyMaintained": "Yes"
@@ -66,7 +66,7 @@
     "name": "ZotSites",
     "link": "https://zotsites.com/",
     "description": "A UCI-specific search engine powered by generative AI that helps students navigate resources, tips and information across the plethora of UCI-related websites.",
-    "creator": "David Culciar & Arjun Dabir",
+    "developer": "David Culciar & Arjun Dabir",
     "tags": ["Official", "AI"],
     "screenshot": "/ZotSites.png",
     "activelyMaintained": "Yes"
@@ -75,7 +75,7 @@
     "name": "Antscoper",
     "link": "https://antscoper.appspot.com/",
     "description": "A tool for viewing the class schedule of every single classroom and lecture hall at UCI.",
-    "creator": "Ted Michael Celis (Krazete)",
+    "developer": "Ted Michael Celis (Krazete)",
     "tags": ["Unofficial", "Course Info", "Map"],
     "screenshot": "/Antscoper.png",
     "activelyMaintained": "No"
@@ -84,7 +84,7 @@
     "name": "UCI App Catalog",
     "link": "https://uci-app-catalog.vercel.app/",
     "description": "An unofficial collection of UCI-related websites and apps. Find, save, and suggest websites for yourself to others to use while at UCI to make your daily lives better.",
-    "creator": "Charlie Weinberger",
+    "developer": "Charlie Weinberger",
     "tags": ["Unofficial"],
     "screenshot": "/UCIAppCatalog.png",
     "activelyMaintained": "Yes"
@@ -93,7 +93,7 @@
     "name": "AntAtlas",
     "link": "https://ant-atlas.awesome-e.dev/",
     "description": "A website that allows for quick access of information regarding dining hall food, bus schedules, course notifications, and library space availability.",
-    "creator": "Ethan Wang",
+    "developer": "Ethan Wang",
     "tags": ["Unofficial", "Food", "Transportation", "Study Room", "Course Planning"],
     "screenshot": "/AntAtlas.png",
     "activelyMaintained": "Yes"
@@ -102,7 +102,7 @@
     "name": "UCI Now",
     "link": "https://studentcenter.uci.edu/home/download-the-apps/",
     "description": "A mobile app that allows students to search ring mall activities, view a calender list of events at the student center, navigate around the student center, and reserve a room in the Courtyard Study Lounge (CSL).",
-    "creator": "UCI Student Center",
+    "developer": "UCI Student Center",
     "tags": ["Official", "Events", "Map", "Study Room", "Mobile App"],
     "screenshot": "/UCINow.png",
     "activelyMaintained": "Yes"
@@ -111,7 +111,7 @@
     "name": "ZotFinder",
     "link": "https://studentcenter.uci.edu/home/download-the-apps/",
     "description": "A mobile app mapping service with detailed routes and estimated travel times to UCI departments, buildings and services not found in Google Maps or other map providers.",
-    "creator": "UCI Student Center",
+    "developer": "UCI Student Center",
     "tags": ["Official", "Map", "Mobile App"],
     "screenshot": "/ZotFinder.png",
     "activelyMaintained": "Yes"
