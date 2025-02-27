@@ -31,7 +31,7 @@ export default function ItemModal({ website, resetSelectedWebsite, onSave, isSav
           <WebsiteImage website={website} type="modal" />
           <TagBadges website={website} />
           <div className="flex flex-row justify-between text-sm text-muted-foreground">
-            <p>Creator: {website.creator}</p>
+            <p>Developer: {website.developer}</p>
             <p>Actively Maintained: {website.activelyMaintained}</p>
           </div>
         </div>
