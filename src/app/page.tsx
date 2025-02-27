@@ -10,8 +10,6 @@ import TagsCombobox from "@/components/TagsCombobox";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { Bookmark, ImageIcon, ImageOff } from "lucide-react";
-
 import { websites } from "@/lib/data";
 
 export default function WebsiteGallery() {
@@ -22,7 +20,6 @@ export default function WebsiteGallery() {
   const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
   const [ suggestWebsiteModal, setSuggestWebsiteModal ] = useState(false);
-  const [ showImages, setShowImages ] = useState(true);
 
   useEffect(() => {
     const localSavedWebsites = localStorage.getItem("savedWebsites");
@@ -83,19 +80,11 @@ export default function WebsiteGallery() {
           />
           <Button
             variant={showSavedWebsitesOnly ? "default" : "defaultWhite"}
-            size="icon"
-            className="w-20"
+            // size="icon"
+            // className="w-20"
             onClick={() => setShowSavedWebsitesOnly(!showSavedWebsitesOnly)}
           >
-            <Bookmark className={showSavedWebsitesOnly ? "fill-current" : ""} />
-          </Button>
-          <Button
-            variant={showImages ? "default" : "defaultWhite"}
-            size="icon"
-            className="w-20"
-            onClick={() => setShowImages(!showImages)}
-          >
-            {showImages ? <ImageIcon /> : <ImageOff />}
+            Show Saved
           </Button>
         </div>
       </div>
@@ -108,7 +97,6 @@ export default function WebsiteGallery() {
             onClick={() => setSelectedWebsite(website)}
             onSave={() => updateSavedWebsites(website)}
             isSaved={() => checkIfSaved(website)}
-            showImages={showImages}
           />
         ))}
       </div>

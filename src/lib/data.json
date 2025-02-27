@@ -103,7 +103,7 @@
     "link": "https://studentcenter.uci.edu/home/download-the-apps/",
     "description": "A mobile app that allows students to search ring mall activities, view a calender list of events at the student center, navigate around the student center, and reserve a room in the Courtyard Study Lounge (CSL).",
     "creator": "UCI Student Center",
-    "tags": ["Official", "Events", "Map", "Study Room"],
+    "tags": ["Official", "Events", "Map", "Study Room", "Mobile App"],
     "screenshot": "/UCINow.png",
     "activelyMaintained": "Yes"
   },
@@ -112,7 +112,7 @@
     "link": "https://studentcenter.uci.edu/home/download-the-apps/",
     "description": "A mobile app mapping service with detailed routes and estimated travel times to UCI departments, buildings and services not found in Google Maps or other map providers.",
     "creator": "UCI Student Center",
-    "tags": ["Official", "Map"],
+    "tags": ["Official", "Map", "Mobile App"],
     "screenshot": "/ZotFinder.png",
     "activelyMaintained": "Yes"
   }
