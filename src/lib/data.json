@@ -20,7 +20,7 @@
   {
     "name": "Anteater API",
     "link": "https://docs.icssc.club/docs/developer/anteaterapi",
-    "description": "API that provides easy access to public data from UC Irvine. Developed for Anteaters, by Anteaters.",
+    "description": "An API that provides easy access to public data from UC Irvine. Developed for Anteaters, by Anteaters.",
     "developer": "Information & Computer Science Student Council (ICSSC)",
     "tags": ["Unofficial", "ICSSC", "Course Info", "API"],
     "screenshot": "/AnteaterAPI.png",
