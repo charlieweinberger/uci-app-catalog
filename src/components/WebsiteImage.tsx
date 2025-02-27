@@ -11,7 +11,7 @@ export default function WebsiteImage({ website, type }: {
         alt={`Screenshot of ${website.name}`}
         width={1000}
         height={1000}
-        className={`w-auto h-${(type === "gallery") ? 40 : 80} object-cover rounded-xl border-uci-blue border-4`}
+        className={`h-${(type === "gallery") ? 40 : 80} object-cover rounded-xl border-uci-blue border-4`}
       />
     </div>
   );
