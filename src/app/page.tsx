@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 import GalleryItem from "@/components/GalleryItem";
 import ItemModal from "@/components/ItemModal";
-import SuggestWebsiteModal from "@/components/SuggestWebsiteModal";
+import FeedbackModal from "@/components/FeedbackModal";
 import TagsCombobox from "@/components/TagsCombobox";
 
 import { Input } from "@/components/ui/input";
@@ -19,7 +19,7 @@ export default function WebsiteGallery() {
   const [ selectedWebsite, setSelectedWebsite ] = useState<Website | null>(null);
   const [ savedWebsites, setSavedWebsites ] = useState<Website[]>([]);
   const [ showSavedWebsitesOnly, setShowSavedWebsitesOnly ] = useState(false);
-  const [ suggestWebsiteModal, setSuggestWebsiteModal ] = useState(false);
+  const [ feedbackModal, setFeedbackModal ] = useState(false);
 
   useEffect(() => {
     const localSavedWebsites = localStorage.getItem("savedWebsites");
@@ -60,9 +60,9 @@ export default function WebsiteGallery() {
       <div className="flex justify-between">
         <h1 className="text-3xl font-bold text-uci-gold">UCI App Catalog</h1>
         <Button
-          onClick={() => setSuggestWebsiteModal(!suggestWebsiteModal)}
+          onClick={() => setFeedbackModal(!feedbackModal)}
         >
-          Suggest Website
+          Submit Feedback
         </Button>
       </div>
       
@@ -80,8 +80,6 @@ export default function WebsiteGallery() {
           />
           <Button
             variant={showSavedWebsitesOnly ? "default" : "defaultWhite"}
-            // size="icon"
-            // className="w-20"
             onClick={() => setShowSavedWebsitesOnly(!showSavedWebsitesOnly)}
           >
             Show Saved
@@ -107,9 +105,9 @@ export default function WebsiteGallery() {
         onSave={() => updateSavedWebsites(selectedWebsite)}
         isSaved={() => checkIfSaved(selectedWebsite)}
       />
-      <SuggestWebsiteModal
-        isOpen={suggestWebsiteModal}
-        resetSuggestWebsiteModal={() => setSuggestWebsiteModal(false)}
+      <FeedbackModal
+        isOpen={feedbackModal}
+        resetFeedbackModal={() => setFeedbackModal(false)}
       />
 
     </div>
