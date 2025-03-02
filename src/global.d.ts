@@ -8,11 +8,15 @@ interface Website {
   activelyMaintained: string
 };
 
-interface SuggestedWebsite {
-  websiteName: string
-  link: string
-  description: string
+type ImageType = "gallery" | "modal";
+
+interface Feedback {
+  userName: string
   userEmail: string
+  feedbackType: FeedbackType
+  appName?: string
+  appLink?: string
+  content: string
 };
 
-type ImageType = "gallery" | "modal";
+type FeedbackType = "App suggestion" | "Feature" | "Bug" | undefined;

@@ -20,7 +20,7 @@
   {
     "name": "Anteater API",
     "link": "https://docs.icssc.club/docs/developer/anteaterapi",
-    "description": "API that provides easy access to public data from UC Irvine. Developed for Anteaters, by Anteaters.",
+    "description": "An API that provides easy access to public data from UC Irvine. Developed for Anteaters, by Anteaters.",
     "developer": "Information & Computer Science Student Council (ICSSC)",
     "tags": ["Unofficial", "ICSSC", "Course Info", "API"],
     "screenshot": "/AnteaterAPI.png",
@@ -114,6 +114,15 @@
     "developer": "UCI Student Center",
     "tags": ["Official", "Map", "Mobile App"],
     "screenshot": "/ZotFinder.png",
+    "activelyMaintained": "Yes"
+  },
+  {
+    "name": "Leksa",
+    "link": "https://apps.apple.com/us/app/leksa/id6738683516",
+    "description": "Dining recommendations for students, by students. See where other college students are eating and what they recommend.",
+    "developer": "Alvin Phan",
+    "tags": ["Unofficial", "Food", "Mobile App"],
+    "screenshot": "/Leksa.png",
     "activelyMaintained": "Yes"
   }
 ]
