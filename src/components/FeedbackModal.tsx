@@ -27,6 +27,7 @@ export default function FeedbackModal({ isOpen, resetFeedbackModal }: {
 
   if (!isOpen) return null;
 
+  // TODO: add confirmation that the user submitted the feedback (aka add a modal/notification after they submit)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     resetFeedbackModal();

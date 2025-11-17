@@ -124,5 +124,14 @@
     "tags": ["Unofficial", "Food", "Mobile App"],
     "screenshot": "/Leksa.png",
     "activelyMaintained": "Yes"
+  },
+  {
+    "name": "UCI Syllabus Finder",
+    "link": "https://uci-syllabus-finder.vercel.app/",
+    "description": "Find syllabi for prior offerings of courses at UCI!",
+    "developer": "Jacob Sommer",
+    "tags": ["Unofficial", "Course Info"],
+    "screenshot": "/UCISyllabusFinder.png",
+    "activelyMaintained": "No"
   }
 ]
